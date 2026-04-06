@@ -32,192 +32,327 @@
     :root {
       --negro: #0A0A0A; --amarillo: #FFEA2A; --blanco: #FFFFFF;
       --gris: #1A1A1A; --verde: #22C55E; --rojo: #E24B4A; --gris-texto: #888888;
+
+      /* Escala tipográfica responsive */
+      --fs-body: clamp(15px, 2.2vw, 18px);
+      --fs-body-lg: clamp(16px, 2.5vw, 20px);
+      --fs-lead: clamp(17px, 2.8vw, 22px);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--negro); color: var(--blanco); font-family: 'DM Sans', sans-serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'DM Sans', sans-serif;
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
     h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; line-height: 1.1; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    .amarillo { color: var(--amarillo); } .verde { color: var(--verde); } .rojo { color: var(--rojo); }
+    .amarillo { color: var(--amarillo); }
+    .verde { color: var(--verde); }
+    .rojo { color: var(--rojo); }
     .center { text-align: center; }
-    .section { padding: 80px 0; } .section-sm { padding: 48px 0; }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 48px 0; }
 
-    .navbar { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid var(--amarillo); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    /* TEXTO UTILITARIO - clases reutilizables */
+    .txt-body    { font-size: var(--fs-body); line-height: 1.8; }
+    .txt-lead    { font-size: var(--fs-lead); line-height: 1.8; }
+    .txt-body-lg { font-size: var(--fs-body-lg); line-height: 1.8; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--amarillo);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
     .navbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; color: var(--amarillo); }
     .navbar-logo span { color: var(--blanco); }
-    .navbar-cta { background: var(--verde); color: var(--negro); font-weight: 900; font-size: 20px; padding: 12px 24px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .navbar-cta {
+      background: var(--verde); color: var(--negro);
+      font-weight: 900; font-size: clamp(14px, 3vw, 20px);
+      padding: 10px 20px; border-radius: 100px;
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
     .navbar-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.4); }
 
+    /* HERO */
     .hero { padding: 80px 0 60px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,234,42,0.08) 0%, transparent 70%); pointer-events: none; }
-    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    .hero-pregunta { font-size: 29px; color: var(--blanco); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
-    .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 72px); line-height: 1.0; margin-bottom: 24px; }
-    .hero-sub { font-size: 29px; color: var(--blanco); margin-bottom: 20px; line-height: 1.7; font-weight: 500; }
-    .hero-desc { font-size: 29px; color: var(--blanco); margin-bottom: 28px; line-height: 1.8; }
-    .hero-desc strong { color: var(--blanco); }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -200px; left: -200px; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,234,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+    }
+    .hero-pregunta { font-size: clamp(16px, 2.5vw, 22px); color: var(--blanco); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
+    .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 72px); line-height: 1.0; margin-bottom: 24px; }
+    .hero-sub { font-size: clamp(15px, 2.5vw, 19px); color: var(--blanco); margin-bottom: 20px; line-height: 1.7; font-weight: 500; }
+    .hero-desc { font-size: clamp(15px, 2.5vw, 18px); color: var(--blanco); margin-bottom: 28px; line-height: 1.8; }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; align-items: center; justify-content: center; }
-    .badge { background: var(--gris); border: 1px solid #333; border-radius: 16px; padding: 7px 12px; font-size: 16px; color: var(--blanco); text-align: center; line-height: 1.4; }
-    .badge.verde { background: rgba(34,197,94,0.1); border-color: var(--verde); color: var(--verde); font-size: 16px; }
+    .badge { background: var(--gris); border: 1px solid #333; border-radius: 16px; padding: 7px 12px; font-size: clamp(12px, 2vw, 14px); color: var(--blanco); text-align: center; line-height: 1.4; }
+    .badge.verde { background: rgba(34,197,94,0.1); border-color: var(--verde); color: var(--verde); }
     .hero-image { position: relative; min-height: 280px; }
     .hero-image img:not(.hero-mascota) { display: none; }
     .hero-mascota { position: absolute; top: -20px; right: -10px; width: 360px; filter: drop-shadow(0 10px 30px rgba(255,234,42,0.3)); animation: float 3s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
-    .btn-cta { display: block; background: #00C851; color: #FFEA2A; font-weight: 900; text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000, 5px 5px 0 rgba(0,0,0,0.4); text-transform: uppercase; padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 5vw, 3.5rem); border-radius: 60px; font-size: clamp(1.5rem, 4vw, 2rem); cursor: pointer; border: none; width: 100%; max-width: 550px; transition: all 0.3s ease; box-shadow: 0 15px 30px rgba(0,200,81,0.3); text-decoration: none; text-align: center; line-height: 1.3; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; pointer-events: auto; position: relative; z-index: 1; }
+    /* BOTÓN CTA */
+    .btn-cta {
+      display: block;
+      background: #00C851; color: #FFEA2A;
+      font-weight: 900;
+      text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
+      text-transform: uppercase;
+      padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 5vw, 3.5rem);
+      border-radius: 60px;
+      font-size: clamp(1.1rem, 4vw, 2rem);
+      cursor: pointer; border: none;
+      width: 100%; max-width: 550px;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 30px rgba(0,200,81,0.3);
+      text-decoration: none; text-align: center;
+      line-height: 1.3; letter-spacing: 1px;
+      font-family: 'DM Sans', sans-serif;
+      position: relative; z-index: 1;
+    }
     .btn-cta:hover { transform: scale(1.04); background: #00a844; box-shadow: 0 20px 40px rgba(0,200,81,0.5); }
-    .btn-cta-sub { font-size: 20px; color: var(--blanco); margin-top: 10px; text-align: center; }
+    .btn-cta-sub { font-size: clamp(13px, 2vw, 16px); color: var(--blanco); margin-top: 10px; text-align: center; }
 
+    /* FRASE MATADORA */
     .frase-matadora { background: var(--amarillo); padding: 60px 24px; text-align: center; }
-    .frase-matadora p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 7vw, 72px); color: #000000; max-width: 800px; margin: 0 auto; line-height: 1.2; font-weight: 900; text-shadow: none; -webkit-text-stroke: 0; }
+    .frase-matadora p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 6vw, 72px); color: #000; max-width: 800px; margin: 0 auto; line-height: 1.2; font-weight: 900; }
 
-    .section-label { font-size: 29px; letter-spacing: 2px; text-transform: uppercase; color: var(--amarillo); font-weight: 700; margin-bottom: 16px; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 60px); margin-bottom: 24px; }
-    .section-body { font-size: 29px; color: var(--blanco); line-height: 1.8; max-width: 680px; }
-    .section-body strong { color: var(--blanco); }
+    /* SECCIONES GENÉRICAS */
+    .section-label { font-size: clamp(13px, 2vw, 16px); letter-spacing: 2px; text-transform: uppercase; color: var(--amarillo); font-weight: 700; margin-bottom: 16px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 5vw, 60px); margin-bottom: 24px; }
+    .section-body { font-size: clamp(15px, 2.5vw, 18px); color: var(--blanco); line-height: 1.8; max-width: 680px; }
 
+    /* DOLOR */
     .dolor-lista { list-style: none; margin-top: 32px; }
-    .dolor-lista li { display: block; padding: 14px 0; border-bottom: 1px solid #1a1a1a; font-size: 29px; color: var(--blanco); line-height: 1.6; }
+    .dolor-lista li { display: block; padding: 14px 0; border-bottom: 1px solid #1a1a1a; font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); line-height: 1.6; }
     .dolor-lista li:last-child { border-bottom: none; }
-    .dolor-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-    .dolor-quote { margin-top: 40px; padding: 32px; background: var(--gris); border-left: 4px solid var(--amarillo); border-radius: 0 12px 12px 0; }
-    .dolor-quote p { font-size: 29px; font-style: italic; color: var(--blanco); line-height: 1.7; }
-    .dolor-cierre { margin-top: 40px; font-size: 22px; color: var(--blanco); font-weight: 600; }
-    .dolor-cierre span { font-family: 'DM Sans', sans-serif; color: var(--amarillo); }
+    .dolor-quote { margin-top: 40px; padding: 24px 28px; background: var(--gris); border-left: 4px solid var(--amarillo); border-radius: 0 12px 12px 0; }
+    .dolor-quote p { font-size: clamp(14px, 2.5vw, 18px); font-style: italic; color: var(--blanco); line-height: 1.7; }
+    .dolor-cierre { margin-top: 40px; font-size: clamp(15px, 2.5vw, 18px); color: var(--blanco); font-weight: 600; }
 
-    .solucion-card { background: var(--gris); border: 2px solid var(--amarillo); border-radius: 20px; padding: 40px; margin-top: 40px; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: default; } .solucion-card:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(255,234,42,0.2); }
+    /* SOLUCIÓN */
+    .solucion-card { background: var(--gris); border: 2px solid var(--amarillo); border-radius: 20px; padding: 32px; margin-top: 40px; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+    .solucion-card:hover { transform: scale(1.01); box-shadow: 0 12px 40px rgba(255,234,42,0.2); }
     .solucion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amarillo), var(--verde)); }
+    .solucion-card p { font-size: clamp(14px, 2.5vw, 18px); line-height: 1.8; }
     .solucion-sin { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .sin-item { display: flex; align-items: flex-start; gap: 10px; font-size: 29px; color: var(--blanco); }
-    .sin-item::before { content: '✔'; font-size: 22px; flex-shrink: 0; color: var(--verde); margin-top: 4px; }
+    .sin-item { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(14px, 2.5vw, 17px); color: var(--blanco); }
+    .sin-item::before { content: '✔'; font-size: 16px; flex-shrink: 0; color: var(--verde); margin-top: 2px; }
 
+    /* BENEFICIOS */
     .beneficios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
     .beneficio-card { background: var(--gris); border: 1px solid #2a2a2a; border-radius: 16px; padding: 24px; transition: border-color 0.2s, transform 0.2s; }
     .beneficio-card:hover { border-color: var(--amarillo); transform: translateY(-4px); }
-    .beneficio-icon { font-size: 24px; margin-bottom: 12px; }
-    .beneficio-title { font-weight: 700; font-size: 29px; color: var(--amarillo); margin-bottom: 8px; }
-    .beneficio-text { font-size: 24px; color: var(--blanco); line-height: 1.6; }
+    .beneficio-icon { font-size: 20px; margin-bottom: 12px; }
+    .beneficio-title { font-weight: 700; font-size: clamp(14px, 2.5vw, 17px); color: var(--amarillo); margin-bottom: 8px; }
+    .beneficio-text { font-size: clamp(13px, 2vw, 15px); color: var(--blanco); line-height: 1.6; }
 
-    .testimonio-historia p { font-size: 29px; color: var(--blanco); line-height: 1.9; margin-bottom: 20px; }
-    .testimonio-historia strong { color: var(--blanco); }
-    .testimonio-quote { margin: 40px 0; padding: 32px; background: var(--gris); border-left: 4px solid var(--amarillo); border-radius: 0 16px 16px 0; font-size: 48px; font-style: italic; color: var(--amarillo); line-height: 1.6; }
+    /* TESTIMONIO */
+    .testimonio-historia p { font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); line-height: 1.9; margin-bottom: 20px; }
+    .testimonio-quote { margin: 40px 0; padding: 28px; background: var(--gris); border-left: 4px solid var(--amarillo); border-radius: 0 16px 16px 0; font-size: clamp(18px, 4vw, 36px); font-style: italic; color: var(--amarillo); line-height: 1.6; }
     .prueba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-    .prueba-img { border-radius: 12px; background: var(--gris); aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: var(--gris-texto); font-size: 13px; text-align: center; padding: 20px; border: 1px dashed #333; }
-    .testimonio-espacios { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .testimonio-slot { background: var(--gris); border: 1px dashed #333; border-radius: 16px; padding: 32px 24px; text-align: center; }
-    .testimonio-slot .estrellas { color: var(--amarillo); font-size: 20px; margin-bottom: 12px; }
-    .testimonio-slot .slot-text { font-size: 14px; color: var(--gris-texto); font-style: italic; }
 
+    /* GARANTÍA */
     .garantia-card { max-width: 680px; margin: 0 auto; background: var(--gris); border: 2px solid var(--verde); border-radius: 24px; padding: 48px 40px; text-align: center; position: relative; overflow: hidden; }
-    .garantia-icon { font-size: 64px; margin-bottom: 24px; }
-    .garantia-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--verde); margin-bottom: 16px; }
-    .garantia-text { font-size: 29px; color: var(--blanco); line-height: 1.9; }
-    .garantia-text strong { color: var(--blanco); }
+    .garantia-icon { margin-bottom: 24px; }
+    .garantia-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 42px); color: var(--verde); margin-bottom: 16px; }
+    .garantia-text { font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); line-height: 1.9; }
     .garantia-mascota { position: absolute; bottom: -30px; right: -20px; width: 110px; filter: drop-shadow(0 8px 20px rgba(255,234,42,0.3)); animation: float 3s ease-in-out infinite; }
 
+    /* NO PARA TI */
     .no-lista { list-style: none; margin-top: 32px; max-width: 680px; }
-    .no-lista li { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #1a1a1a; font-size: 29px; color: var(--blanco); }
+    .no-lista li { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #1a1a1a; font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); }
     .no-lista li:last-child { border-bottom: none; }
-    .no-cierre { margin-top: 40px; padding: 32px; background: rgba(255,234,42,0.05); border: 1px solid rgba(255,234,42,0.2); border-radius: 16px; }
-    .no-cierre p { font-size: 44px; color: var(--blanco); line-height: 1.7; }
-    .no-cierre strong { color: var(--amarillo); }
+    .no-cierre { margin-top: 40px; padding: 28px; background: rgba(255,234,42,0.05); border: 1px solid rgba(255,234,42,0.2); border-radius: 16px; }
+    .no-cierre p { font-size: clamp(15px, 2.5vw, 20px); color: var(--blanco); line-height: 1.7; }
 
+    /* ENTREGABLES */
     .entregables-lista { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
-    .entregable-item { display: flex; gap: 20px; align-items: flex-start; background: linear-gradient(135deg, #1a1a00, #2a2400); border: 1px solid rgba(255,234,42,0.4); border-radius: 16px; padding: 24px; transition: transform 0.2s, box-shadow 0.2s; }
+    .entregable-item { display: flex; gap: 20px; align-items: flex-start; background: linear-gradient(135deg, #1a1a00, #2a2400); border: 1px solid rgba(255,234,42,0.4); border-radius: 16px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; }
     .entregable-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,234,42,0.3); }
-    .entregable-emoji { font-size: 32px; flex-shrink: 0; }
-    .entregable-title { font-weight: 700; font-size: 29px; color: var(--amarillo); margin-bottom: 6px; }
-    .entregable-desc { font-size: 22px; color: var(--blanco); line-height: 1.6; }
-    .proximas-redes { margin-top: 40px; padding: 24px; background: rgba(255,234,42,0.04); border: 1px solid rgba(255,234,42,0.15); border-radius: 16px; }
-    .proximas-lista { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-    .proximas-lista li { font-size: 29px; color: var(--gris-texto); }
+    .entregable-emoji { font-size: 28px; flex-shrink: 0; }
+    .entregable-title { font-weight: 700; font-size: clamp(14px, 2.5vw, 18px); color: var(--amarillo); margin-bottom: 6px; }
+    .entregable-desc { font-size: clamp(13px, 2vw, 16px); color: var(--blanco); line-height: 1.6; }
 
+    /* BONOS */
     .bonos-grid { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
-    .bono-card { background: var(--gris); border: 1px solid rgba(255,234,42,0.3); border-left: none; border-radius: 16px; padding: 28px; display: flex; gap: 20px; align-items: flex-start; position: relative; overflow: hidden; }
+    .bono-card { background: var(--gris); border: 1px solid rgba(255,234,42,0.3); border-left: none; border-radius: 16px; padding: 24px; display: flex; gap: 20px; align-items: flex-start; position: relative; overflow: hidden; }
     .bono-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--amarillo); }
-    .bono-emoji { font-size: 28px; flex-shrink: 0; }
-    .bono-title { font-weight: 700; font-size: 29px; color: var(--amarillo); margin-bottom: 8px; }
-    .bono-text { font-size: 29px; color: var(--blanco); line-height: 1.6; }
-    .bono-warning { margin-top: 10px; font-size: 20px; color: #999999; font-style: italic; }
+    .bono-emoji { font-size: 24px; flex-shrink: 0; }
+    .bono-title { font-weight: 700; font-size: clamp(14px, 2.5vw, 18px); color: var(--amarillo); margin-bottom: 8px; }
+    .bono-text { font-size: clamp(13px, 2.5vw, 17px); color: var(--blanco); line-height: 1.6; }
+    .bono-warning { margin-top: 10px; font-size: clamp(12px, 2vw, 15px); color: #999; font-style: italic; }
 
+    /* TABLA ANCHOR */
     .anchor-tabla { width: 100%; border-collapse: collapse; margin-top: 32px; border-radius: 16px; overflow: hidden; border: 1px solid #3a0000; }
-    .anchor-tabla th { background: #1a0000; padding: 20px; text-align: left; font-size: 22px; color: var(--blanco); letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
-    .anchor-tabla td { padding: 16px 20px; border-bottom: 1px solid #1a1a1a; font-size: 22px; color: var(--gris-texto); }
+    .anchor-tabla th { background: #1a0000; padding: 16px; text-align: left; font-size: clamp(13px, 2vw, 17px); color: var(--blanco); text-transform: uppercase; font-weight: 700; }
+    .anchor-tabla td { padding: 14px 16px; border-bottom: 1px solid #1a1a1a; font-size: clamp(13px, 2vw, 16px); color: var(--gris-texto); }
     .anchor-tabla tr:last-child td { border-bottom: none; }
-    .precio-col { color: var(--rojo); font-weight: 700; }
-    .incalculable { color: var(--rojo); font-weight: 700; font-size: 26px; }
-    .total-row td { background: rgba(226,75,74,0.1); color: var(--rojo); font-weight: 700; font-size: 26px; border-top: 2px solid var(--rojo); }
+    .total-row td { background: rgba(226,75,74,0.1); color: var(--rojo); font-weight: 700; font-size: clamp(15px, 2.5vw, 20px); border-top: 2px solid var(--rojo); }
 
+    /* PLANES */
     .planes-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 48px; }
-    .plan-card { border-radius: 20px; padding: 32px 24px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
+    .plan-card { border-radius: 20px; padding: 32px 20px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
     .plan-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
     .plan-card.destacado { background: linear-gradient(135deg, #2a2000, #1a1400); border: 3px solid var(--amarillo); box-shadow: 0 0 30px rgba(255,234,42,0.2); }
-    .plan-badge { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--amarillo); color: var(--negro); font-size: 22px; font-weight: 900; padding: 10px 28px; border-radius: 100px; white-space: nowrap; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 0 24px rgba(255,234,42,0.6); -webkit-text-stroke: 0.5px rgba(0,0,0,0.3); }
-    .plan-nombre { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--blanco); margin-bottom: 8px; }
-    .plan-precio { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: var(--amarillo); line-height: 1; margin-bottom: 4px; }
-    .plan-periodo { font-size: 18px; color: var(--blanco); margin-bottom: 24px; }
+    .plan-badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: var(--amarillo); color: var(--negro); font-size: clamp(11px, 2vw, 16px); font-weight: 900; padding: 8px 20px; border-radius: 100px; white-space: nowrap; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 0 24px rgba(255,234,42,0.6); }
+    .plan-nombre { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 36px); color: var(--blanco); margin-bottom: 8px; }
+    .plan-precio { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 7vw, 64px); color: var(--amarillo); line-height: 1; margin-bottom: 4px; }
+    .plan-periodo { font-size: clamp(13px, 2vw, 16px); color: var(--blanco); margin-bottom: 24px; }
     .plan-features { list-style: none; text-align: left; margin-bottom: 28px; }
-    .plan-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 20px; color: var(--blanco); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .plan-features li { display: flex; gap: 8px; align-items: flex-start; font-size: clamp(12px, 2vw, 15px); color: var(--blanco); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .plan-features li:last-child { border-bottom: none; }
-    .plan-features li.si::before { content: '✅'; font-size: 14px; flex-shrink: 0; }
-    .plan-features li.no::before { content: '❌'; font-size: 14px; flex-shrink: 0; }
+    .plan-features li.si::before { content: '✅'; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+    .plan-features li.no::before { content: '❌'; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
     .plan-features li.no { color: #888; }
-    .plan-cta { display: block; background: var(--verde); color: var(--negro); font-weight: 900; font-size: 24px; padding: 18px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .plan-cta { display: block; background: var(--verde); color: var(--negro); font-weight: 900; font-size: clamp(14px, 2.5vw, 20px); padding: 14px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
     .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.35); }
 
+    /* FAQ */
     .faq-lista { margin-top: 40px; max-width: 720px; margin-left: auto; margin-right: auto; }
     .faq-item { border-bottom: 1px solid #1f1f1f; }
-    .faq-pregunta { width: 100%; background: none; border: none; color: var(--amarillo); font-family: 'DM Sans', sans-serif; font-size: 29px; font-weight: 600; text-align: left; padding: 24px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color 0.2s; }
+    .faq-pregunta { width: 100%; background: none; border: none; color: var(--amarillo); font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 2.5vw, 18px); font-weight: 600; text-align: left; padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color 0.2s; }
     .faq-pregunta:hover { color: var(--verde); }
-    .faq-arrow { color: var(--amarillo); font-size: 20px; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-arrow { color: var(--amarillo); font-size: 16px; flex-shrink: 0; transition: transform 0.3s; }
     .faq-respuesta { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
-    .faq-respuesta.open { max-height: 300px; padding-bottom: 24px; }
-    .faq-respuesta p { font-size: 29px; color: var(--blanco); line-height: 1.8; }
+    .faq-respuesta.open { max-height: 300px; padding-bottom: 20px; }
+    .faq-respuesta p { font-size: clamp(14px, 2.5vw, 17px); color: var(--blanco); line-height: 1.8; }
     .faq-item.active .faq-arrow { transform: rotate(180deg); }
     .faq-item.active .faq-pregunta { color: var(--verde); }
 
+    /* URGENCIA */
     .urgencia-bg { background: linear-gradient(135deg, #1a0000, #0a0a0a); border-top: 1px solid rgba(226,75,74,0.3); border-bottom: 1px solid rgba(226,75,74,0.3); }
 
-    .prof-hora { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(255,234,42,0.1); line-height: 1; margin-bottom: -20px; }
-    .prof-texto { font-size: 29px; color: var(--blanco); line-height: 1.9; }
-    .prof-texto strong { color: var(--blanco); }
+    /* PROFUNDIZACIÓN */
+    .prof-hora { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 10vw, 80px); color: rgba(255,234,42,0.1); line-height: 1; margin-bottom: -20px; }
+    .prof-texto { font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); line-height: 1.9; }
     .prof-sin { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
-    .prof-sin-item { display: flex; gap: 12px; align-items: center; font-size: 29px; color: var(--verde); font-weight: 500; }
+    .prof-sin-item { display: flex; gap: 12px; align-items: center; font-size: clamp(14px, 2.5vw, 18px); color: var(--verde); font-weight: 500; }
     .prof-sin-item::before { content: '✓'; font-weight: 700; }
-    .prof-cierre { margin-top: 48px; padding: 40px; background: var(--gris); border-radius: 20px; border: 1px solid #2a2a2a; text-align: center; }
-    .prof-cierre p { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--blanco); line-height: 1.2; }
-    .prof-cierre p span { color: var(--amarillo); }
+    .prof-cierre { margin-top: 48px; padding: 32px; background: var(--gris); border-radius: 20px; border: 1px solid #2a2a2a; text-align: center; }
+    .prof-cierre p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 42px); color: var(--blanco); line-height: 1.2; }
 
-    .cierre-mascota { width: 192px; margin: 0 auto 32px; filter: drop-shadow(0 10px 30px rgba(255,234,42,0.25)); animation: float 3s ease-in-out infinite; display: block; }
-    .cierre-frase-final { margin-top: 48px; padding: 48px 40px; background: var(--amarillo); border-radius: 24px; }
-    .cierre-frase-final p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(47px, 7.2vw, 72px); color: #000000; line-height: 1.2; font-weight: 900; text-shadow: none; }
+    /* CIERRE */
+    .cierre-mascota { width: 160px; margin: 0 auto 32px; filter: drop-shadow(0 10px 30px rgba(255,234,42,0.25)); animation: float 3s ease-in-out infinite; display: block; }
+    .cierre-frase-final { margin-top: 48px; padding: 40px 32px; background: var(--amarillo); border-radius: 24px; }
+    .cierre-frase-final p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 6vw, 64px); color: #000; line-height: 1.2; font-weight: 900; }
 
+    /* FOOTER */
     .footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 40px 24px; text-align: center; }
     .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--amarillo); margin-bottom: 16px; }
-    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-    .footer-links a { color: var(--gris-texto); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--gris-texto); text-decoration: none; font-size: 13px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--amarillo); }
-    .footer-copy { font-size: 13px; color: #444; }
+    .footer-copy { font-size: 12px; color: #444; }
 
-    @media (max-width: 768px) {
-      .navbar-logo-text { display: none; }
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-image { order: -1; }
-      .hero-mascota { width: 220px; top: -60px; right: 0; }
-      .beneficios-grid, .planes-grid, .prueba-grid, .testimonio-espacios, .solucion-sin { grid-template-columns: 1fr; }
-      .anchor-precio-num { font-size: 60px; }
-      .prof-hora { font-size: 56px; }
-    }
+    /* PRÓXIMAS REDES GRID */
+    .proximas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .proximas-grid-item { display: flex; align-items: flex-start; gap: 12px; }
+    .proximas-grid-item p { font-size: clamp(13px, 2vw, 17px); color: var(--blanco); line-height: 1.5; }
 
-    @media (max-width: 768px) { .proximas-grid { grid-template-columns: 1fr !important; } }
+    /* CHIPS DE CONFIANZA */
+    .trust-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+    .trust-chip { background: var(--gris); border: 1px solid #333; padding: 8px 16px; border-radius: 100px; font-size: clamp(12px, 2vw, 14px); color: var(--blanco); }
+
+    /* FADE IN */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========================
+       RESPONSIVE MOBILE
+    ======================== */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .section { padding: 48px 0; }
+      .section-sm { padding: 32px 0; }
+
+      /* Hero */
+      .hero { padding: 32px 0 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 0 16px; }
+      .hero-image { order: -1; min-height: 180px; }
+      .hero-mascota { width: 180px; top: -20px; right: 0; position: relative; display: block; margin: 0 auto; }
+
+      /* Grids a 1 columna */
+      .beneficios-grid,
+      .planes-grid,
+      .prueba-grid,
+      .solucion-sin,
+      .proximas-grid { grid-template-columns: 1fr !important; }
+
+      /* Navbar */
+      .navbar { padding: 12px 16px; }
+
+      /* Planes */
+      .planes-grid { gap: 40px; }
+      .plan-card { padding: 28px 16px; }
+
+      /* Garantía */
+      .garantia-card { padding: 32px 20px; }
+      .garantia-mascota { width: 70px; bottom: -15px; right: -8px; }
+
+      /* Bonos */
+      .bono-card { flex-direction: column; gap: 10px; }
+
+      /* Tabla */
+      .anchor-tabla th,
+      .anchor-tabla td { padding: 10px 12px; }
+
+      /* Testimonio quote */
+      .testimonio-quote { padding: 20px; margin: 24px 0; }
+
+      /* Solucion card */
+      .solucion-card { padding: 24px 20px; }
+
+      /* FAQ */
+      .faq-pregunta { padding: 16px 0; }
+
+      /* Cierre */
+      .cierre-mascota { width: 120px; }
+      .cierre-frase-final { padding: 28px 20px; }
+
+      /* Frase matadora */
+      .frase-matadora { padding: 40px 16px; }
+
+      /* Botón CTA */
+      .btn-cta { font-size: 1rem; padding: 0.9rem 1.5rem; }
+
+      /* Entregables */
+      .entregable-item { padding: 16px; gap: 14px; }
+      .entregable-emoji { font-size: 22px; }
+
+      /* Urgencia */
+      .urgencia-bg .container p { font-size: 15px; }
+
+      /* Prof cierre */
+      .prof-cierre { padding: 24px 20px; }
+    }
+
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <div class="navbar-logo" style="display:flex; align-items:center;"><img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/logo-never-off-app-cuadrado-transparente-webp.webp" alt="" style="width:48px; height:48px; border-radius:10px;"></div>
+    <div class="navbar-logo" style="display:flex; align-items:center;">
+      <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/logo-never-off-app-cuadrado-transparente-webp.webp" alt="Never Off" style="width:44px; height:44px; border-radius:10px;">
+    </div>
     <a href="#planes" class="navbar-cta" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Ser Fundador(a)</a>
   </nav>
 
@@ -226,20 +361,50 @@
     <div class="hero-inner">
       <div>
         <p class="hero-pregunta" style="color:var(--verde);">¿Y si pudieras...?</p>
-        <h1 class="hero-headline"><span class="amarillo">Publicar en tus redes</span> todos los días <span class="amarillo">desde tu celular,</span> en menos de <span class="amarillo">10 minutos</span></h1><br>
-        <p class="hero-sub">✅ Sin abrir la computadora.<br>✅ Sin copiar ni pegar nada.<br>✅ Sin saltar entre apps.<br><br><span style="color:var(--verde); font-weight:600;">Estés donde estés.</span><br><br></p>
-        <p class="hero-desc"><span style="color:var(--amarillo); font-weight:600;">Never Off</span> es la única <span style="color:var(--amarillo); font-weight:600;">App</span> en español que no solo <span style="color:var(--verde); font-weight:600;">programa y publica</span> en tus redes... sino que <span style="color:var(--amarillo); font-weight:600;">genera contenido completo con IA:</span> <span style="color:var(--verde); font-weight:600;">Texto</span>, <span style="color:var(--verde); font-weight:600;">Hashtags</span> e <span style="color:var(--verde); font-weight:600;">Imagen,</span> que <span style="color:var(--amarillo); font-weight:600;">suena como tú, no como robot</span>. Adaptado a tu marca, tu nicho y tu forma de hablar. Tú solo <span style="color:var(--amarillo); font-weight:600;">revisas y apruebas en segundos</span>. Todo desde tu celular, <span style="color:var(--verde); font-weight:600;">sin tocar la computadora</span>, sin copiar ni pegar absolutamente nada.</p>
-        <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/01-COLLAGE-HERO-De-idea-a-publicado-webp.webp" alt="De idea a publicado en menos de 10 minutos con Never Off App" loading="eager" style="width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(255,234,42,0.15); margin-bottom:24px;">
+        <h1 class="hero-headline">
+          <span class="amarillo">Publicar en tus redes</span> todos los días
+          <span class="amarillo">desde tu celular,</span> en menos de
+          <span class="amarillo">10 minutos</span>
+        </h1><br>
+        <p class="hero-sub">
+          ✅ Sin abrir la computadora.<br>
+          ✅ Sin copiar ni pegar nada.<br>
+          ✅ Sin saltar entre apps.<br><br>
+          <span style="color:var(--verde); font-weight:600;">Estés donde estés.</span><br><br>
+        </p>
+        <p class="hero-desc">
+          <span style="color:var(--amarillo); font-weight:600;">Never Off</span> es la única
+          <span style="color:var(--amarillo); font-weight:600;">App</span> en español que no solo
+          <span style="color:var(--verde); font-weight:600;">programa y publica</span> en tus redes...
+          sino que <span style="color:var(--amarillo); font-weight:600;">genera contenido completo con IA:</span>
+          <span style="color:var(--verde); font-weight:600;">Texto</span>,
+          <span style="color:var(--verde); font-weight:600;">Hashtags</span> e
+          <span style="color:var(--verde); font-weight:600;">Imagen,</span>
+          que <span style="color:var(--amarillo); font-weight:600;">suena como tú, no como robot</span>.
+          Adaptado a tu marca, tu nicho y tu forma de hablar. Tú solo
+          <span style="color:var(--amarillo); font-weight:600;">revisas y apruebas en segundos</span>.
+          Todo desde tu celular,
+          <span style="color:var(--verde); font-weight:600;">sin tocar la computadora</span>,
+          sin copiar ni pegar absolutamente nada.
+        </p>
+        <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/01-COLLAGE-HERO-De-idea-a-publicado-webp.webp"
+             alt="De idea a publicado en menos de 10 minutos con Never Off App"
+             loading="eager"
+             style="width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(255,234,42,0.15); margin-bottom:24px;">
         <div class="hero-badges">
           <span class="badge" style="border-color:var(--amarillo);">Android<br>iOS · Web</span>
           <span class="badge verde">✓ Acceso<br>inmediato</span>
           <span class="badge" style="border-color:var(--amarillo);">Instagram<br>&amp; Facebook</span>
         </div>
-        <a href="#planes" class="btn-cta" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')"><strong style="font-weight:900; letter-spacing:2px;">QUIERO PUBLICAR YA</strong></a>
+        <a href="#planes" class="btn-cta" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">
+          <strong style="font-weight:900; letter-spacing:2px;">QUIERO PUBLICAR YA</strong>
+        </a>
         <p class="btn-cta-sub">🔒 Precio Fundador asegurado 12 meses · Garantía 7 días · Solo 50 lugares</p>
       </div>
       <div class="hero-image">
-        <img class="hero-mascota" src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-never-off-con-fondo-webp.webp" alt="Mascota Never Off App" loading="lazy">
+        <img class="hero-mascota"
+             src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-never-off-con-fondo-webp.webp"
+             alt="Mascota Never Off App" loading="lazy">
       </div>
     </div>
   </section>
@@ -253,20 +418,30 @@
   <section class="section" style="background:var(--negro); border-top:1px solid #1f1f1f; border-bottom:1px solid #1f1f1f;">
     <div class="container fade-in">
       <p class="section-label" style="color:var(--verde);">Seamos honestos.</p>
-      <h2 class="section-title">Sabes que tienes que publicar en redes.<br><span style="color:var(--amarillo); font-weight:600;">Lo sabes desde hace meses.</span><br><span style="color:var(--verde); font-weight:600;">Tal vez años.</span></h2>
-      <p class="section-body">Pero entre atender clientes, cerrar ventas, entregar tu producto o servicio, y todo lo que realmente trae dinero a tu negocio... <span style="color:var(--rojo); font-weight:600;">las redes siempre se quedan para después.</span><br><br><span style="color:var(--amarillo); font-weight:600;">Y cuando por fin te sientas a crear contenido:</span></p>
+      <h2 class="section-title">Sabes que tienes que publicar en redes.<br>
+        <span style="color:var(--amarillo);">Lo sabes desde hace meses.</span><br>
+        <span style="color:var(--verde);">Tal vez años.</span>
+      </h2>
+      <p class="section-body">
+        Pero entre atender clientes, cerrar ventas, entregar tu producto o servicio, y todo lo que realmente trae dinero a tu negocio...
+        <span style="color:var(--rojo); font-weight:600;">las redes siempre se quedan para después.</span><br><br>
+        <span style="color:var(--amarillo); font-weight:600;">Y cuando por fin te sientas a crear contenido:</span>
+      </p>
       <ul class="dolor-lista">
-        <li><span class="dolor-icon">❌</span> Abres ChatGPT, copias el texto, lo pegas en un documento...</li>
-        <li><span class="dolor-icon">❌</span> Buscas otra IA para la imagen — te da algo feo, lo intentas tres veces más...</li>
-        <li><span class="dolor-icon">❌</span> Por fin sale algo decente pero tiene marca de agua. Hay que descargarla, subirla a un editor, tapar la marca, volver a descargar...</li>
-        <li><span class="dolor-icon">❌</span> En el celular es un martirio absoluto. Saltas entre mil apps, llenas tu memoria...</li>
-        <li><span class="dolor-icon">❌</span> Una hora después. Para un solo post.</li>
+        <li>❌ Abres ChatGPT, copias el texto, lo pegas en un documento...</li>
+        <li>❌ Buscas otra IA para la imagen — te da algo feo, lo intentas tres veces más...</li>
+        <li>❌ Por fin sale algo decente pero tiene marca de agua. Hay que descargarla, subirla a un editor, tapar la marca, volver a descargar...</li>
+        <li>❌ En el celular es un martirio absoluto. Saltas entre mil apps, llenas tu memoria...</li>
+        <li>❌ Una hora después. Para un solo post.</li>
       </ul>
       <div class="dolor-quote">
         <p>Y lo peor no es el tiempo. Es el agotamiento mental. Porque mientras haces todo eso, tu negocio te está esperando — tus clientes, tus pedidos, tu familia que necesita tiempo contigo, incluso tus mascotas que apenas ves... todo lo que realmente paga las cuentas y llena tu vida.</p>
       </div>
-      <div class="dolor-cierre" style="font-size:29px; line-height:1.8;">
-        <span style="color:var(--rojo); font-family:'DM Sans',sans-serif; font-size:34px;">Hasta que un día simplemente dejas de publicar.</span><br><span style="color:var(--amarillo); font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px);">Y esa inconsistencia tiene un costo real:</span><br>Clientes que no te ven, no te recuerdan, y...<br><span style="color:#E24B4A; font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,60px);">le compran a otro.</span>
+      <div class="dolor-cierre">
+        <span style="color:var(--rojo); font-size:clamp(18px,3.5vw,28px); display:block; margin-bottom:8px;">Hasta que un día simplemente dejas de publicar.</span>
+        <span style="color:var(--amarillo); font-family:'Bebas Neue',sans-serif; font-size:clamp(30px,5vw,56px); display:block; margin-bottom:8px;">Y esa inconsistencia tiene un costo real:</span>
+        <span style="display:block; margin-bottom:4px;">Clientes que no te ven, no te recuerdan, y...</span>
+        <span style="color:#E24B4A; font-family:'Bebas Neue',sans-serif; font-size:clamp(30px,5vw,56px); display:block;">le compran a otro.</span>
       </div>
     </div>
   </section>
@@ -277,44 +452,84 @@
       <div class="fade-in" style="max-width:680px;">
         <p class="section-label" style="color:var(--verde);">Y no es tu culpa.</p>
         <h2 class="section-title"><span class="amarillo">El problema nunca fuiste tú.</span></h2>
-        <p class="section-body" style="margin-bottom:24px;">Nadie te enseñó a ser community manager, diseñador, copywriter y estratega de contenido... además de dirigir tu negocio y cuidar a tus seres queridos.<br><br>Pero <span style="color:var(--rojo); font-weight:600;">el algoritmo no perdona.</span> Las redes sociales están diseñadas para premiar a quien aparece todos los días y castigar a quien desaparece.</p>
+        <p class="section-body" style="margin-bottom:24px;">
+          Nadie te enseñó a ser community manager, diseñador, copywriter y estratega de contenido... además de dirigir tu negocio y cuidar a tus seres queridos.<br><br>
+          Pero <span style="color:var(--rojo); font-weight:600;">el algoritmo no perdona.</span> Las redes sociales están diseñadas para premiar a quien aparece todos los días y castigar a quien desaparece.
+        </p>
         <ul class="dolor-lista" style="margin-top:0;">
-          <li><span class="dolor-icon">❌</span> Cada día que no publicas, <span style="color:var(--rojo); font-style:italic;">tu competencia sí lo hace.</span></li>
-          <li><span class="dolor-icon">❌</span> Cada semana sin contenido, <span style="color:var(--rojo); font-style:italic;">tu audiencia se olvida de ti.</span></li>
-          <li><span class="dolor-icon">❌</span> Cada mes inconsistente, <span style="color:var(--rojo); font-style:italic;">la confianza en tu marca se evapora.</span></li>
+          <li>❌ Cada día que no publicas, <span style="color:var(--rojo); font-style:italic;">tu competencia sí lo hace.</span></li>
+          <li>❌ Cada semana sin contenido, <span style="color:var(--rojo); font-style:italic;">tu audiencia se olvida de ti.</span></li>
+          <li>❌ Cada mes inconsistente, <span style="color:var(--rojo); font-style:italic;">la confianza en tu marca se evapora.</span></li>
         </ul>
         <div class="dolor-quote" style="margin-top:32px;">
           <p>Y lo más cruel es esto: No es que no tengas nada valioso que decir. Tu negocio tiene una historia. Tiene resultados. Tiene clientes satisfechos. Tiene valor real.</p>
         </div>
-        <p style="font-size:29px; color:var(--blanco); font-weight:600; margin-top:32px;">El problema es que crear contenido<br><span style="color:#E24B4A;">es demasiado complicado para hacerlo solo.</span></p>
-        <p style="font-size:72px; font-family:'Bebas Neue',sans-serif; color:var(--amarillo); margin-top:16px; line-height:1;">Hasta ahora.</p>
+        <p class="section-body" style="font-weight:600; margin-top:32px;">
+          El problema es que crear contenido<br>
+          <span style="color:#E24B4A;">es demasiado complicado para hacerlo solo.</span>
+        </p>
+        <p style="font-size:clamp(48px,10vw,72px); font-family:'Bebas Neue',sans-serif; color:var(--amarillo); margin-top:16px; line-height:1;">Hasta ahora.</p>
       </div>
     </div>
   </section>
 
-  <!-- SOLUCION -->
+  <!-- SOLUCIÓN -->
   <section class="section" style="background:#0f0f0f;">
     <div class="container">
       <div class="fade-in">
         <p class="section-label" style="color:var(--verde);">Te presento</p>
         <h2 class="section-title"><span class="amarillo">Never Off</span></h2>
-        <p class="section-body">La <span style="color:var(--amarillo); font-weight:600;">solución</span> que nunca existió antes, y que yo misma necesitaba. La <span style="color:var(--amarillo); font-weight:600;">App</span> que <span style="color:var(--verde); font-weight:600;">hace todo el trabajo pesado por ti.</span></p>
+        <p class="section-body">
+          La <span style="color:var(--amarillo); font-weight:600;">solución</span> que nunca existió antes, y que yo misma necesitaba.
+          La <span style="color:var(--amarillo); font-weight:600;">App</span> que
+          <span style="color:var(--verde); font-weight:600;">hace todo el trabajo pesado por ti.</span>
+        </p>
       </div>
       <div class="solucion-card fade-in">
-        <p style="font-size:29px; color:var(--blanco); line-height:1.9;"><span style="color:var(--amarillo); font-weight:600;">Never Off</span> analiza <span style="color:var(--verde); font-weight:600;">tu negocio</span>, <span style="color:var(--verde); font-weight:600;">tu nicho</span> y <span style="color:var(--verde); font-weight:600;">tu forma de comunicarte</span> con tu audiencia, y <span style="color:var(--amarillo); font-weight:600;">genera contenido</span> que <span style="color:var(--amarillo); font-weight:600;">suena como tú.</span> No como robot, ni como plantilla genérica. Como tú.</p>
-        <p style="font-size:29px; color:var(--blanco); font-weight:600; margin-top:20px;"><span style="color:var(--verde); font-weight:600;">Texto</span> listo, <span style="color:var(--verde); font-weight:600;">Imagen</span> sin marca de agua, <span style="color:var(--verde); font-weight:600;">Hashtags</span> inteligentes. Todo <span style="color:var(--amarillo); font-weight:600;">desde una sola App</span>, desde tu <span style="color:var(--amarillo); font-weight:600;">celular</span>, en menos de <span style="color:var(--amarillo); font-weight:600;">10 minutos</span> y <span style="color:var(--verde); font-weight:600;">desde donde estés.</span></p>
-        <p style="font-size:29px; color:var(--blanco); margin-top:16px; line-height:1.8;"><span style="color:var(--verde); font-weight:600;">Tú solo revisas, ajustas</span> si quieres, <span style="color:var(--verde); font-weight:600;">y publicas.</span> O lo programas para que <span style="color:var(--verde); font-weight:600;">se publique solo</span> <span style="color:var(--amarillo); font-weight:600;">mientras tú</span> <span style="color:var(--amarillo); font-weight:600;">atiendes lo que realmente importa.</span></p>
+        <p>
+          <span style="color:var(--amarillo); font-weight:600;">Never Off</span> analiza
+          <span style="color:var(--verde); font-weight:600;">tu negocio</span>,
+          <span style="color:var(--verde); font-weight:600;">tu nicho</span> y
+          <span style="color:var(--verde); font-weight:600;">tu forma de comunicarte</span>
+          con tu audiencia, y <span style="color:var(--amarillo); font-weight:600;">genera contenido</span>
+          que <span style="color:var(--amarillo); font-weight:600;">suena como tú.</span>
+          No como robot, ni como plantilla genérica. Como tú.
+        </p>
+        <p style="font-weight:600; margin-top:20px;">
+          <span style="color:var(--verde); font-weight:600;">Texto</span> listo,
+          <span style="color:var(--verde); font-weight:600;">Imagen</span> sin marca de agua,
+          <span style="color:var(--verde); font-weight:600;">Hashtags</span> inteligentes.
+          Todo <span style="color:var(--amarillo); font-weight:600;">desde una sola App</span>,
+          desde tu <span style="color:var(--amarillo); font-weight:600;">celular</span>,
+          en menos de <span style="color:var(--amarillo); font-weight:600;">10 minutos</span> y
+          <span style="color:var(--verde); font-weight:600;">desde donde estés.</span>
+        </p>
+        <p style="margin-top:16px;">
+          <span style="color:var(--verde); font-weight:600;">Tú solo revisas, ajustas</span> si quieres,
+          <span style="color:var(--verde); font-weight:600;">y publicas.</span>
+          O lo programas para que
+          <span style="color:var(--verde); font-weight:600;">se publique solo</span>
+          <span style="color:var(--amarillo); font-weight:600;">mientras tú atiendes lo que realmente importa.</span>
+        </p>
         <div class="solucion-sin">
           <div class="sin-item">Sin abrir la computadora</div>
           <div class="sin-item">Sin copiar ni pegar absolutamente nada</div>
           <div class="sin-item">Sin saltar entre apps</div>
           <div class="sin-item">Sin descargar ni subir archivos</div>
-          <div class="sin-item">Sin llenar tu celular de archivos que nunca volverás a usar</div>
-          <div class="sin-item">Sin pagar múltiples suscripciones que se acumulan en tu tarjeta cada mes</div>
+          <div class="sin-item">Sin llenar tu celular de archivos</div>
+          <div class="sin-item">Sin pagar múltiples suscripciones</div>
           <div class="sin-item">Sin perder horas que no tienes</div>
         </div>
-        <p style="font-size:29px; color:var(--amarillo); font-weight:600; margin-top:28px; line-height:1.7;">Y te advierto algo: <span style="color:var(--blanco); font-weight:600;">una vez que la pruebes,</span> <span style="color:var(--verde); font-weight:600;">vas a querer publicar una y otra y otra vez.</span> Crear contenido se volverá tan fácil y divertido <span style="color:var(--blanco); font-weight:600;">que vas a buscar cualquier excusa para hacerlo.</span></p>
-        <p style="font-size:42px; font-family:'Bebas Neue',sans-serif; color:var(--blanco); margin-top:16px; letter-spacing:1px;"><span style="color:var(--amarillo); font-weight:600;">Never Off:</span> <span style="color:var(--verde); font-weight:600;">Tus redes, siempre activas.</span></p>
+        <p style="color:var(--amarillo); font-weight:600; margin-top:28px;">
+          Y te advierto algo: <span style="color:var(--blanco); font-weight:600;">una vez que la pruebes,</span>
+          <span style="color:var(--verde); font-weight:600;">vas a querer publicar una y otra y otra vez.</span>
+          Crear contenido se volverá tan fácil y divertido
+          <span style="color:var(--blanco); font-weight:600;">que vas a buscar cualquier excusa para hacerlo.</span>
+        </p>
+        <p style="font-size:clamp(26px,4vw,42px); font-family:'Bebas Neue',sans-serif; color:var(--blanco); margin-top:16px;">
+          <span style="color:var(--amarillo); font-weight:600;">Never Off:</span>
+          <span style="color:var(--verde); font-weight:600;">Tus redes, siempre activas.</span>
+        </p>
       </div>
     </div>
   </section>
@@ -328,11 +543,11 @@
       <div class="beneficios-grid fade-in">
         <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Creas contenido en menos de 10 minutos</div><div class="beneficio-text">No más horas perdidas. Tu feed activo todos los días sin el martirio.</div></div>
         <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Tu contenido suena como tú</div><div class="beneficio-text">No como IA, no como plantilla. Como la voz real de tu marca.</div></div>
-        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Imágenes únicas sin marca de agua</div><div class="beneficio-text">Propias y exclusivas para cada post. Sin derechos de autor, sin que nadie más las haya usado.</div></div>
+        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Imágenes únicas sin marca de agua</div><div class="beneficio-text">Propias y exclusivas para cada post. Sin derechos de autor.</div></div>
         <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Tu marca se ve consistente y profesional</div><div class="beneficio-text">Aunque estés de viaje, en reuniones o atendiendo a tu familia.</div></div>
-        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Publicas al instante o Programas con tiempo</div><div class="beneficio-text">Entre citas, en el transporte, esperando en la fila del banco. Donde estés, tus redes siguen activas aunque tú te desconectes.</div></div>
+        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Publicas al instante o programas con tiempo</div><div class="beneficio-text">Entre citas, en el transporte, esperando en la fila. Donde estés.</div></div>
         <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Instagram y Facebook desde un solo lugar</div><div class="beneficio-text">Sin siquiera abrir la App de cada red.</div></div>
-        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Una sola suscripción reemplaza todo</div><div class="beneficio-text">Adiós a pagar ChatGPT, Canva, IA de imagen y programador por separado. Con <span style="color:var(--amarillo);">Never Off</span> tienes texto, imagen y publicación en una sola App.</div></div>
+        <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Una sola suscripción reemplaza todo</div><div class="beneficio-text">Adiós a pagar ChatGPT, Canva, IA de imagen y programador por separado.</div></div>
         <div class="beneficio-card"><div class="beneficio-icon">✅</div><div class="beneficio-title">Tu audiencia te ve, te recuerda y te elige</div><div class="beneficio-text">Porque estás presente cuando otros desaparecen.</div></div>
       </div>
     </div>
@@ -345,19 +560,20 @@
         <p class="section-label center" style="color:var(--verde);">Los resultados hablan solos.</p>
         <h2 class="section-title center" style="margin-bottom:40px;">Prueba real. <span class="amarillo">Sin trucos.</span></h2>
         <p><span style="color:var(--amarillo); font-weight:600;">Never Off</span> nació de una necesidad real: La mía.</p>
-        <p>Como emprendedora con varios proyectos, <span style="color:var(--rojo);">yo misma viví el caos:</span> miles de pestañas abiertas, programas corriendo al mismo tiempo, la computadora al límite… y aun así sin poder publicar consistentemente. Y cuando salía a la calle, simplemente era imposible. <span style="color:var(--rojo);">Las redes se quedaban abandonadas incluso por meses</span> mientras la vida seguía… y mis proyectos se quedaban estancados, sin avanzar, <span style="color:var(--rojo);">sin generar los ingresos que yo necesitaba.</span> Todo porque manejar las redes era tan complicado que me robaba el tiempo que no tenía.</p>
+        <p>Como emprendedora con varios proyectos, <span style="color:var(--rojo);">yo misma viví el caos:</span> miles de pestañas abiertas, programas corriendo al mismo tiempo, la computadora al límite… y aun así sin poder publicar consistentemente. Y cuando salía a la calle, simplemente era imposible. <span style="color:var(--rojo);">Las redes se quedaban abandonadas incluso por meses</span> mientras la vida seguía… y mis proyectos se quedaban estancados, sin avanzar, <span style="color:var(--rojo);">sin generar los ingresos que yo necesitaba.</span></p>
         <p><span style="color:var(--verde); font-weight:600;">Por eso construí</span> <span style="color:var(--amarillo); font-weight:600;">Never Off.</span></p>
-        <p>Y el día que me senté con la App por primera vez, en una sola tarde, con una cuenta de Instagram completamente nueva… <span style="color:var(--amarillo); font-weight:600;">Publiqué 10 posts.</span> <span style="color:var(--verde); font-weight:600;">Sin tocar Instagram.</span> Sin abrir ninguna IA externa. Sin entrar a Canva. Sin copiar ni pegar absolutamente nada. Sin descargar ni subir ningún archivo. Sin llenar mi celular con archivos para "arreglar". <span style="color:var(--amarillo); font-weight:600;">Sin salir de la App.</span></p>
+        <p>Y el día que me senté con la App por primera vez, en una sola tarde, con una cuenta de Instagram completamente nueva… <span style="color:var(--amarillo); font-weight:600;">Publiqué 10 posts.</span> <span style="color:var(--verde); font-weight:600;">Sin tocar Instagram.</span> Sin abrir ninguna IA externa. Sin entrar a Canva. Sin copiar ni pegar absolutamente nada. <span style="color:var(--amarillo); font-weight:600;">Sin salir de la App.</span></p>
         <p>Lo que sentí ese día <span style="color:var(--verde); font-weight:600;">no tiene nombre.</span> Pero sí tiene palabras:</p>
       </div>
       <div class="testimonio-quote fade-in">
         "¡¡¡TODAS GENERADAS desde NEVER OFF APP!!! Fácil, rápido y divertido... y adictivo. ¡¡¡La quiero seguir usando!!!"
       </div>
       <div class="testimonio-historia fade-in">
-        <p style="font-size:22px;">Eso lo escribí yo, la creadora de la App... Porque incluso yo me sorprendí. 🤭</p>
-        <p style="margin-top:12px; font-weight:700; font-size:29px; color:var(--blanco);">👇 Aquí la prueba. <span style="color:var(--verde);">Feed real.</span> Cuenta nueva. <span style="color:var(--verde); font-weight:600;">Todo generado desde</span> <span style="color:var(--amarillo); font-weight:600;">Never Off.</span></p>
+        <p style="font-size:clamp(13px,2vw,16px);">Eso lo escribí yo, la creadora de la App... Porque incluso yo me sorprendí. 🤭</p>
+        <p style="margin-top:12px; font-weight:700;">👇 Aquí la prueba. <span style="color:var(--verde);">Feed real.</span> Cuenta nueva. <span style="color:var(--verde); font-weight:600;">Todo generado desde</span> <span style="color:var(--amarillo); font-weight:600;">Never Off.</span></p>
       </div>
-            <div style="display:flex; flex-direction:column; gap:16px;">
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center;">
           <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/01-feed-ig-1.webp" style="width:100%; border-radius:12px;" alt="Captura 1" loading="lazy">
           <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/02-feed-ig-2.webp" style="width:100%; border-radius:12px;" alt="Captura 2" loading="lazy">
@@ -378,32 +594,39 @@
           <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/09-post-programado-2.webp" style="width:100%; border-radius:12px;" alt="Captura 9" loading="lazy">
           <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/10-post-publicado.webp" style="width:100%; border-radius:12px;" alt="Captura 10" loading="lazy">
         </div>
-      </div>      <div style="margin-top:32px; padding:24px; background:var(--gris); border-radius:16px; border:1px solid #2a2a2a;" class="fade-in">
-        <p style="font-size:29px; color:var(--blanco); line-height:1.8;">¿No me crees? <span style="color:var(--verde); font-weight:600;">Ve tú mismo(a).</span> Entra a Instagram y busca <strong style="color:var(--amarillo);">@neveroffapp</strong>. Revisa las fechas y horas de cada publicación… Todo lo que ves ahí fue generado y publicado directamente desde <span style="color:var(--amarillo); font-weight:600;">Never Off</span>, sin tocar Instagram, sin Canva, sin copiar ni pegar nada. Ah, y <span style="color:var(--amarillo); font-weight:600;">aprovechando la vuelta,</span> <span style="color:var(--verde); font-weight:600;">síguenos en Instagram.</span> 😊</p>
       </div>
-      <p style="font-size:22px; color:var(--amarillo); font-weight:600; margin-top:48px; margin-bottom:24px;">📘 Y aquí en Facebook:</p>
-      <div class="prueba-grid fade-in" style="grid-template-columns:1fr 1fr; margin-top:0; align-items:center;">
+
+      <div style="margin-top:32px; padding:24px; background:var(--gris); border-radius:16px; border:1px solid #2a2a2a;" class="fade-in">
+        <p class="section-body">¿No me crees? <span style="color:var(--verde); font-weight:600;">Ve tú mismo(a).</span> Entra a Instagram y busca <strong style="color:var(--amarillo);">@neveroffapp</strong>. Revisa las fechas y horas de cada publicación… Todo lo que ves ahí fue generado y publicado directamente desde <span style="color:var(--amarillo); font-weight:600;">Never Off</span>, sin tocar Instagram, sin Canva, sin copiar ni pegar nada. Ah, y <span style="color:var(--amarillo); font-weight:600;">aprovechando la vuelta,</span> <span style="color:var(--verde); font-weight:600;">síguenos en Instagram.</span> 😊</p>
+      </div>
+
+      <p style="font-size:clamp(15px,2.5vw,18px); color:var(--amarillo); font-weight:600; margin-top:48px; margin-bottom:24px;">📘 Y aquí en Facebook:</p>
+      <div class="prueba-grid fade-in" style="margin-top:0; align-items:center;">
         <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/11-facebook-feed-1.webp" style="width:100%; border-radius:12px; display:block;" alt="Facebook Feed 1" loading="lazy">
         <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/12-facebook-feed-2.webp" style="width:100%; border-radius:12px; display:block;" alt="Facebook Feed 2" loading="lazy">
       </div>
-
     </div>
   </section>
 
-  <!-- GARANTIA -->
+  <!-- GARANTÍA -->
   <section class="section" style="background:#0f0f0f;">
     <div class="container">
       <div class="garantia-card fade-in">
-        <div class="garantia-icon"><img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/escudo-garantia-dorado.webp" alt="Garantía" style="width:180px; height:auto;"></div>
+        <div class="garantia-icon">
+          <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/escudo-garantia-dorado.webp" alt="Garantía" style="width:clamp(100px,20vw,180px); height:auto;">
+        </div>
         <h2 class="garantia-title">Tu inversión está 100% protegida.</h2>
         <p class="garantia-text">
           Sé lo que estás pensando: "¿Y si no es para mí?"<br><br>
-          Por eso <span style="color:var(--amarillo); font-weight:600;">Never Off</span> viene con <span style="color:var(--verde); font-weight:700;">Garantía de 7 días sin preguntas.</span><br><br>
+          Por eso <span style="color:var(--amarillo); font-weight:600;">Never Off</span> viene con
+          <span style="color:var(--verde); font-weight:700;">Garantía de 7 días sin preguntas.</span><br><br>
           Pruébala. Úsala. Genera tu contenido. Publica. Y si en los primeros 7 días sientes que no es lo que esperabas… te devolvemos tu dinero completo, sin explicaciones ni trámites complicados.<br><br>
           <span style="color:var(--amarillo); font-weight:600;">Sin riesgos. Sin letra chiquita. Sin pretextos.</span><br><br>
           Porque estoy tan segura de lo que <span style="color:var(--amarillo); font-weight:600;">Never Off</span> puede hacer por ti, que el riesgo lo asumo yo, no tú.
         </p>
-        <img class="garantia-mascota" src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-Never-Off-Transparente-webp.webp" alt="Mascota Never Off App" loading="lazy">
+        <img class="garantia-mascota"
+             src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-Never-Off-Transparente-webp.webp"
+             alt="Mascota Never Off App" loading="lazy">
       </div>
     </div>
   </section>
@@ -414,7 +637,7 @@
       <div class="fade-in">
         <h2 class="section-title">Never Off no es para <span class="rojo">todo el mundo.</span></h2>
         <p class="section-body" style="margin-bottom:16px;">Y quiero ser totalmente honesta contigo antes de que sigas leyendo.</p>
-        <p style="font-size:29px; color:var(--blanco); font-weight:600; margin-bottom:8px;">Never Off NO es para ti si:</p>
+        <p class="section-body" style="font-weight:600; margin-bottom:8px;">Never Off NO es para ti si:</p>
       </div>
       <ul class="no-lista fade-in">
         <li>❌ Buscas una herramienta que publique sin que tú revises nada — aquí tú siempre tienes el control de lo que sale en tu nombre.</li>
@@ -423,8 +646,10 @@
         <li>❌ Prefieres seguir haciendo todo manualmente y disfrutas el proceso — te respetamos totalmente.</li>
       </ul>
       <div class="no-cierre fade-in">
-        <p>Pero si tienes algo que vender, algo que compartir, y quieres que el mundo lo vea sin que crear contenido te consuma la vida…<br><br>
-        <strong>✨ <span style="color:var(--amarillo);">Never Off</span> <span style="color:var(--verde);">es lo que estabas buscando</span> sin saber que existía. 🚀</strong></p>
+        <p>
+          Pero si tienes algo que vender, algo que compartir, y quieres que el mundo lo vea sin que crear contenido te consuma la vida…<br><br>
+          <strong>✨ <span style="color:var(--amarillo);">Never Off</span> <span style="color:var(--verde);">es lo que estabas buscando</span> sin saber que existía. 🚀</strong>
+        </p>
       </div>
     </div>
   </section>
@@ -439,30 +664,31 @@
         <div class="entregable-item"><div class="entregable-emoji">📱</div><div><div class="entregable-title">La App Never Off</div><div class="entregable-desc">Disponible para iOS, Android y versión web. Tu fábrica de contenido siempre contigo, lista para cuando tú lo estés.</div></div></div>
         <div class="entregable-item"><div class="entregable-emoji">✍️</div><div><div class="entregable-title">Generador de texto con IA</div><div class="entregable-desc">Escribe textos completos por ti, con tu tono, tu estilo y tu mensaje, listos para publicar en segundos.</div></div></div>
         <div class="entregable-item"><div class="entregable-emoji">🎨</div><div><div class="entregable-title">Generador de imágenes con IA</div><div class="entregable-desc">Una imagen propia y única para cada post. Sin marca de agua, sin derechos de autor, sin que nadie más la haya usado antes.</div></div></div>
-        <div class="entregable-item"><div class="entregable-emoji">📸</div><div><div class="entregable-title">Sube tu propio contenido</div><div class="entregable-desc">¿Tienes fotos o videos de tus productos o servicio? Súbelos directamente desde tu celular y publícalos o prográmalos con texto y hashtags generados por IA y revisados por ti. Sin editores externos, sin pasos extra.</div></div></div>
+        <div class="entregable-item"><div class="entregable-emoji">📸</div><div><div class="entregable-title">Sube tu propio contenido</div><div class="entregable-desc">¿Tienes fotos o videos de tus productos? Súbelos directamente desde tu celular y publícalos con texto y hashtags generados por IA. Sin editores externos, sin pasos extra.</div></div></div>
         <div class="entregable-item"><div class="entregable-emoji">#️⃣</div><div><div class="entregable-title">Hashtags inteligentes</div><div class="entregable-desc">Generados automáticamente para cada publicación. Sin copiar listas genéricas de internet.</div></div></div>
-        <div class="entregable-item"><div class="entregable-emoji">📅</div><div><div class="entregable-title">Publicación instantánea o programada</div><div class="entregable-desc">Publica al instante cuando te nace — entre citas, en el transporte, donde estés. O programa días, semanas o meses por adelantado. Tus redes siempre activas aunque tú te desconectes.</div></div></div>
-        <div class="entregable-item"><div class="entregable-emoji">📊</div><div><div class="entregable-title">Historial completo</div><div class="entregable-desc">Consulta todos tus posts publicados, programados y borradores en un solo lugar. Guarda borradores y retómalos cuando quieras — nada se pierde.</div></div></div>
-        <div class="entregable-item"><div class="entregable-emoji">🔄</div><div><div class="entregable-title">Reutilizador de contenido</div><div class="entregable-desc">Adapta cada post automáticamente a otras redes sociales… con el copy, el tono y el formato adecuado para cada una. Sin volver a escribir desde cero.</div></div></div>
+        <div class="entregable-item"><div class="entregable-emoji">📅</div><div><div class="entregable-title">Publicación instantánea o programada</div><div class="entregable-desc">Publica al instante o programa días, semanas o meses por adelantado. Tus redes siempre activas aunque tú te desconectes.</div></div></div>
+        <div class="entregable-item"><div class="entregable-emoji">📊</div><div><div class="entregable-title">Historial completo</div><div class="entregable-desc">Consulta todos tus posts publicados, programados y borradores en un solo lugar. Nada se pierde.</div></div></div>
+        <div class="entregable-item"><div class="entregable-emoji">🔄</div><div><div class="entregable-title">Reutilizador de contenido</div><div class="entregable-desc">Adapta cada post automáticamente a otras redes sociales con el copy y formato adecuado. Sin volver a escribir desde cero.</div></div></div>
       </div>
+
       <div class="fade-in" style="margin-top:48px;">
         <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:24px;">
-          <span style="font-size:29px;">✨</span>
-          <p style="font-size:29px; color:var(--amarillo); font-weight:700;">Actualmente disponible en: <span style="color:var(--verde);">Instagram y Facebook.</span></p>
+          <span style="font-size:clamp(16px,3vw,22px);">✨</span>
+          <p style="font-size:clamp(15px,2.5vw,20px); color:var(--amarillo); font-weight:700;">Actualmente disponible en: <span style="color:var(--verde);">Instagram y Facebook.</span></p>
         </div>
-        <div style="background:var(--gris); border:2px solid rgba(255,234,42,0.2); border-radius:20px; padding:32px 32px 32px 16px; margin-top:16px;">
-          <p style="font-size:29px; color:var(--amarillo); font-weight:700; margin-bottom:24px;">⏳Lo que viene en la siguiente versión:</p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="proximas-grid">
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">TikTok, Threads, Pinterest y más redes</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">Videos verticales con IA y publicación directa</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">Asistente de ideas con IA integrado</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">Bandeja de entrada unificada de todas tus redes</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">Analíticas y métricas de rendimiento</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">Tu identidad de marca en tus imágenes</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔥</span><p style="font-size:24px; color:var(--blanco); line-height:1.5;">App en inglés y portugués</p></div>
-            <div style="display:flex; align-items:flex-start; gap:12px;"><span style="font-size:24px; flex-shrink:0;">🔜</span><p style="font-size:24px; color:var(--amarillo); font-weight:600; line-height:1.5;">Y mucho más que ya estamos construyendo...</p></div>
+        <div style="background:var(--gris); border:2px solid rgba(255,234,42,0.2); border-radius:20px; padding:28px 24px; margin-top:16px;">
+          <p style="font-size:clamp(15px,2.5vw,20px); color:var(--amarillo); font-weight:700; margin-bottom:24px;">⏳ Lo que viene en la siguiente versión:</p>
+          <div class="proximas-grid">
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>TikTok, Threads, Pinterest y más redes</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>Videos verticales con IA y publicación directa</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>Asistente de ideas con IA integrado</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>Bandeja de entrada unificada de todas tus redes</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>Analíticas y métricas de rendimiento</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>Tu identidad de marca en tus imágenes</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔥</span><p>App en inglés y portugués</p></div>
+            <div class="proximas-grid-item"><span style="font-size:22px; flex-shrink:0;">🔜</span><p style="color:var(--amarillo); font-weight:600;">Y mucho más que ya estamos construyendo...</p></div>
           </div>
-          <p style="margin-top:28px; font-size:26px; color:var(--amarillo); font-style:italic; font-weight:600;">Quienes entran hoy como Fundadores <span style="color:var(--verde);">serán los primeros en acceder a cada nueva función.</span></p>
+          <p style="margin-top:28px; font-size:clamp(14px,2.5vw,18px); color:var(--amarillo); font-style:italic; font-weight:600;">Quienes entran hoy como Fundadores <span style="color:var(--verde);">serán los primeros en acceder a cada nueva función.</span></p>
         </div>
       </div>
     </div>
@@ -476,12 +702,42 @@
         <h2 class="section-title">Porque si te unes hoy como <span class="amarillo">Fundador(a)*</span> <span style="color:var(--verde);">recibes además:</span></h2>
       </div>
       <div class="bonos-grid fade-in">
-        <div class="bono-card"><div class="bono-emoji">🎁</div><div><div class="bono-title">Bono 1 — Precio Fundador asegurado por 12 meses.</div><div class="bono-text">El precio del plan que elijas hoy: <span style="color:var(--verde);">Starter</span>, <span style="color:var(--verde);">Creador</span> o <span style="color:var(--verde);">Pro</span>, queda <span style="color:var(--amarillo); font-weight:600;">asegurado por un año completo.</span> Aunque el precio suba, aunque integremos funciones con mayor valor, tú sigues pagando lo mismo.</div><div class="bono-warning">⚠️ Aplica únicamente al plan contratado desde el inicio. No a upgrades posteriores. Se pierde si cancelas o desactivas tu suscripción.</div></div></div>
-        <div class="bono-card"><div class="bono-emoji">🎁</div><div><div class="bono-title">Bono 2 — Usa la App Gratis hasta el Lanzamiento Oficial.</div><div class="bono-text">Pagas hoy y accedes de inmediato. <span style="color:var(--verde); font-weight:600;">Tu mensualidad</span> <span style="color:var(--amarillo); font-weight:600;">empieza a correr a partir de la fecha del lanzamiento oficial.</span></div><div class="bono-warning">⚠️ El uso durante este período estará sujeto a los límites del plan contratado.</div></div></div>
-        <div class="bono-card"><div class="bono-emoji">🎁</div><div><div class="bono-title">Bono 3 — Acceso anticipado a nuevas funciones.</div><div class="bono-text">Serás de los primeros en tener acceso a cada nueva función antes que nadie. Tu experiencia y casos de uso reales son importantes para nosotros — para que la App te ayude cada vez más.</div></div></div>
-        <div class="bono-card" style="border-left-color:var(--verde);"><div class="bono-emoji">🎁</div><div><div class="bono-title" style="color:var(--verde);">Bonus Extra — Créditos de imagen de bienvenida.</div><div class="bono-text"><span style="color:var(--amarillo); font-weight:600;">Adicionales a los que ya incluye tu plan:</span><br><br><strong style="color:var(--blanco);"><span style="color:var(--verde);">Starter:</span> +10 créditos<br><span style="color:var(--verde);">Creador:</span> +20 créditos<br><span style="color:var(--verde);">Pro:</span> +50 créditos</strong></div><div class="bono-warning">(1 crédito = 1 imagen generada con IA)</div></div></div>
+        <div class="bono-card">
+          <div class="bono-emoji">🎁</div>
+          <div>
+            <div class="bono-title">Bono 1 — Precio Fundador asegurado por 12 meses.</div>
+            <div class="bono-text">El precio del plan que elijas hoy: <span style="color:var(--verde);">Starter</span>, <span style="color:var(--verde);">Creador</span> o <span style="color:var(--verde);">Pro</span>, queda <span style="color:var(--amarillo); font-weight:600;">asegurado por un año completo.</span> Aunque el precio suba, aunque integremos funciones con mayor valor, tú sigues pagando lo mismo.</div>
+            <div class="bono-warning">⚠️ Aplica únicamente al plan contratado desde el inicio. No a upgrades posteriores. Se pierde si cancelas o desactivas tu suscripción.</div>
+          </div>
+        </div>
+        <div class="bono-card">
+          <div class="bono-emoji">🎁</div>
+          <div>
+            <div class="bono-title">Bono 2 — Usa la App Gratis hasta el Lanzamiento Oficial.</div>
+            <div class="bono-text">Pagas hoy y accedes de inmediato. <span style="color:var(--verde); font-weight:600;">Tu mensualidad</span> <span style="color:var(--amarillo); font-weight:600;">empieza a correr a partir de la fecha del lanzamiento oficial.</span></div>
+            <div class="bono-warning">⚠️ El uso durante este período estará sujeto a los límites del plan contratado.</div>
+          </div>
+        </div>
+        <div class="bono-card">
+          <div class="bono-emoji">🎁</div>
+          <div>
+            <div class="bono-title">Bono 3 — Acceso anticipado a nuevas funciones.</div>
+            <div class="bono-text">Serás de los primeros en tener acceso a cada nueva función antes que nadie. Tu experiencia y casos de uso reales son importantes para nosotros.</div>
+          </div>
+        </div>
+        <div class="bono-card" style="border-left-color:var(--verde);">
+          <div class="bono-emoji">🎁</div>
+          <div>
+            <div class="bono-title" style="color:var(--verde);">Bonus Extra — Créditos de imagen de bienvenida.</div>
+            <div class="bono-text">
+              <span style="color:var(--amarillo); font-weight:600;">Adicionales a los que ya incluye tu plan:</span><br><br>
+              <strong style="color:var(--blanco);"><span style="color:var(--verde);">Starter:</span> +10 créditos<br><span style="color:var(--verde);">Creador:</span> +20 créditos<br><span style="color:var(--verde);">Pro:</span> +50 créditos</strong>
+            </div>
+            <div class="bono-warning">(1 crédito = 1 imagen generada con IA)</div>
+          </div>
+        </div>
       </div>
-      <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--blanco);">*Válido solo para las primeras 50 personas en adquirir su plan.</p>
+      <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--blanco);">*Válido solo para las primeras 50 personas en adquirir su plan.</p>
     </div>
   </section>
 
@@ -500,26 +756,35 @@
           <tr><td style="color:var(--blanco);">Herramienta de programación</td><td style="color:var(--rojo); font-weight:700;">~$18 USD/mes</td></tr>
           <tr><td style="color:var(--blanco);">Editor de imágenes</td><td style="color:var(--rojo); font-weight:700;">~$13 USD/mes</td></tr>
           <tr><td style="color:var(--blanco);">Herramienta de hashtags</td><td style="color:var(--rojo); font-weight:700;">~$10 USD/mes</td></tr>
-          <tr style="background:rgba(226,75,74,0.08);"><td style="color:var(--rojo); font-weight:700;">Las horas perdidas saltando entre apps</td><td style="color:var(--rojo); font-weight:700; font-size:26px;">Precio incalculable</td></tr>
+          <tr style="background:rgba(226,75,74,0.08);"><td style="color:var(--rojo); font-weight:700;">Las horas perdidas saltando entre apps</td><td style="color:var(--rojo); font-weight:700;">Precio incalculable</td></tr>
           <tr class="total-row"><td>Total</td><td>~$91 USD/mes + tu tiempo</td></tr>
         </tbody>
       </table>
       <div class="fade-in" style="text-align:center; margin-top:40px;">
-        <p style="font-family:'Bebas Neue',sans-serif; font-size:42px; color:var(--blanco); margin-bottom:8px;">Con <span style="color:var(--amarillo);">Never Off</span> <span style="color:var(--verde);">tienes todo eso y más</span> desde:</p>
-        <div style="display:flex; align-items:baseline; justify-content:center; gap:10px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:80px; color:var(--amarillo); line-height:1;">$12.99</span><span style="font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--amarillo);">USD/mes</span></div>
-        <p style="font-size:29px; color:var(--verde); font-weight:600; margin-top:16px;">Menos de lo que pagas por una sola herramienta por separado.</p>
+        <p style="font-family:'Bebas Neue',sans-serif; font-size:clamp(26px,4vw,42px); color:var(--blanco); margin-bottom:8px;">Con <span style="color:var(--amarillo);">Never Off</span> <span style="color:var(--verde);">tienes todo eso y más</span> desde:</p>
+        <div style="display:flex; align-items:baseline; justify-content:center; gap:10px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:clamp(56px,12vw,80px); color:var(--amarillo); line-height:1;">$12.99</span>
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:clamp(24px,5vw,40px); color:var(--amarillo);">USD/mes</span>
+        </div>
+        <p style="font-size:clamp(15px,2.5vw,18px); color:var(--verde); font-weight:600; margin-top:16px;">Menos de lo que pagas por una sola herramienta por separado.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA 1 -->
+  <!-- CTA INTERMEDIO -->
   <section class="section-sm" style="background:#0a0a0a; text-align:center;">
     <div class="container">
       <div class="fade-in" style="max-width:560px; margin:0 auto;">
         <h2 class="section-title">¿Listo(a) para nunca más <span class="amarillo">abandonar tus redes?</span></h2>
-        <p style="font-size:29px; color:var(--blanco); margin:16px 0 32px;">Únete hoy como <span style="color:var(--verde); font-weight:600;">Fundador(a)</span> y empieza a <span style="color:var(--amarillo); font-weight:600;">publicar contenido profesional</span> <span style="color:var(--verde); font-weight:600;">desde tu celular</span>, <span style="color:var(--verde); font-weight:600;">en menos de 10 minutos</span>, <span style="color:var(--amarillo); font-weight:600;">sin salir de una sola App</span>, <span style="color:var(--verde); font-weight:600;">estés donde estés.</span></p>
-        <a href="#planes" style="display:inline-block; text-decoration:none; margin-top:8px;"><div style="font-size:72px; animation:bounce 1s ease-in-out infinite;">👇</div></a>
-        <style>@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }</style>
+        <p class="section-body" style="margin:16px auto 32px;">
+          Únete hoy como <span style="color:var(--verde); font-weight:600;">Fundador(a)</span> y empieza a
+          <span style="color:var(--amarillo); font-weight:600;">publicar contenido profesional</span>
+          <span style="color:var(--verde); font-weight:600;">desde tu celular</span>,
+          en menos de 10 minutos, sin salir de una sola App.
+        </p>
+        <a href="#planes" style="display:inline-block; text-decoration:none; margin-top:8px;">
+          <div style="font-size:clamp(48px,12vw,72px); animation:bounce 1s ease-in-out infinite;">👇</div>
+        </a>
       </div>
     </div>
   </section>
@@ -530,24 +795,29 @@
       <div class="fade-in center">
         <p class="section-label" style="color:var(--verde);">Elige tu plan.</p>
         <h2 class="section-title">Acceso <span class="amarillo">Fundador.</span></h2>
-        <p class="section-body" style="margin:0 auto 16px;"><span style="color:var(--verde);">Precio asegurado por 12 meses.</span> <span style="color:var(--amarillo);">Solo para las primeras 50 personas.</span></p>
+        <p class="section-body" style="margin:0 auto 16px;">
+          <span style="color:var(--verde);">Precio asegurado por 12 meses.</span>
+          <span style="color:var(--amarillo);">Solo para las primeras 50 personas.</span>
+        </p>
       </div>
       <div class="planes-grid fade-in">
+        <!-- Starter -->
         <div class="plan-card" style="background:#0d0d0d; border:1px solid #333;">
           <div class="plan-nombre" style="color:#aaaaaa;">Starter</div>
-          <div class="plan-precio">$12<span style="font-size:28px;">.99</span></div>
+          <div class="plan-precio">$12<span style="font-size:clamp(18px,3vw,28px);">.99</span></div>
           <div class="plan-periodo">USD / mes</div>
           <ul class="plan-features">
             <li class="si">1 red social (IG o FB)</li>
             <li class="si">20 posts completos (texto + imagen)</li>
             <li class="si">20 créditos de imagen adicionales</li>
             <li class="si">Hashtags inteligentes</li>
-            <li class="si">Programación y Publicación directa de posts</li>
+            <li class="si">Programación y Publicación directa</li>
             <li class="si">Historial completo</li>
             <li class="no">Sin descarga de imágenes IA</li>
           </ul>
-          <a href="#" class="plan-cta" style="background:transparent; color:var(--verde); border:2px solid var(--verde); box-shadow:none; font-size:18px; padding:12px;" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Starter</a>
+          <a href="#" class="plan-cta" style="background:transparent; color:var(--verde); border:2px solid var(--verde); box-shadow:none;" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Starter</a>
         </div>
+        <!-- Creador -->
         <div class="plan-card destacado">
           <div class="plan-badge">⭐ MÁS POPULAR</div>
           <div class="plan-nombre">Creador</div>
@@ -558,13 +828,14 @@
             <li class="si">30 posts completos (texto + imagen)</li>
             <li class="si">30 créditos de imagen adicionales</li>
             <li class="si">Hashtags inteligentes</li>
-            <li class="si">Programación y Publicación directa de posts</li>
+            <li class="si">Programación y Publicación directa</li>
             <li class="si">Historial completo</li>
             <li class="si">Descarga de imágenes IA</li>
             <li class="si">Reutilizar contenido entre redes</li>
           </ul>
-          <a href="#" class="plan-cta" style="background:var(--verde); color:#000; border:2px solid #00ff66; box-shadow:0 0 20px rgba(34,197,94,0.5); font-size:18px; padding:12px;" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Creador</a>
+          <a href="#" class="plan-cta" style="background:var(--verde); color:#000; border:2px solid #00ff66; box-shadow:0 0 20px rgba(34,197,94,0.5);" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Creador</a>
         </div>
+        <!-- Pro -->
         <div class="plan-card" style="background:linear-gradient(135deg, #0a2010, #061508); border:2px solid var(--verde); box-shadow:0 0 30px rgba(34,197,94,0.2);">
           <div class="plan-nombre" style="color:var(--verde);">Pro</div>
           <div class="plan-precio">$49</div>
@@ -574,17 +845,17 @@
             <li class="si">100 posts completos (texto + imagen)</li>
             <li class="si">100 créditos de imagen adicionales</li>
             <li class="si">Hashtags inteligentes</li>
-            <li class="si">Programación y Publicación directa de posts</li>
+            <li class="si">Programación y Publicación directa</li>
             <li class="si">Historial completo</li>
             <li class="si">Descarga de imágenes IA</li>
             <li class="si">Reutilizar contenido entre redes</li>
             <li class="si">Acceso anticipado a nuevas funciones</li>
             <li class="si">Soporte prioritario</li>
           </ul>
-          <a href="#" class="plan-cta" style="background:var(--amarillo); color:#000; border:2px solid #ffdd00; box-shadow:0 0 20px rgba(255,234,42,0.4); font-size:18px; padding:12px;" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Pro</a>
+          <a href="#" class="plan-cta" style="background:var(--amarillo); color:#000; border:2px solid #ffdd00; box-shadow:0 0 20px rgba(255,234,42,0.4);" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">Elijo Pro</a>
         </div>
       </div>
-      <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--blanco);">1 crédito = 1 imagen generada con IA · Créditos adicionales disponibles desde la App</p>
+      <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--blanco);">1 crédito = 1 imagen generada con IA · Créditos adicionales disponibles desde la App</p>
     </div>
   </section>
 
@@ -596,7 +867,7 @@
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Necesito saber de tecnología para usar Never Off?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Para nada. Si sabes usar WhatsApp, sabes usar <span style="color:var(--amarillo); font-weight:600;">Never Off</span>. No hay configuraciones complicadas, no hay curva de aprendizaje.</p></div></div>
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿El contenido que genera realmente suena como yo?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Sí. Antes de generar cualquier post, <span style="color:var(--amarillo); font-weight:600;">Never Off</span> analiza tu negocio, tu nicho y tu forma de comunicarte. El resultado es contenido que suena como tú — no como robot, ni como plantilla genérica.</p></div></div>
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Funciona para cualquier tipo de negocio?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Sí. No importa si vendes productos físicos, servicios, cursos, o tienes una marca personal — <span style="color:var(--amarillo); font-weight:600;">Never Off</span> se adapta a tu nicho y tu audiencia.</p></div></div>
-        <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Sirve si vendo productos físicos y necesito mostrar mis propias imágenes?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>¡Sí! <span style="color:var(--amarillo); font-weight:600;">Never Off</span> te permite subir tus propias fotos y videos directamente desde tu celular. La IA genera el texto y los hashtags perfectos para acompañarlos. No necesitas imágenes generadas si prefieres usar las tuyas.</p></div></div>
+        <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Sirve si vendo productos físicos y necesito mostrar mis propias imágenes?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>¡Sí! <span style="color:var(--amarillo); font-weight:600;">Never Off</span> te permite subir tus propias fotos y videos directamente desde tu celular. La IA genera el texto y los hashtags perfectos para acompañarlos.</p></div></div>
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Qué pasa si no me gusta el contenido generado?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Puedes ajustarlo con IA — más corto, más formal, diferente tono — o editarlo manualmente tú mismo. Tú siempre tienes el control.</p></div></div>
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Puedo cancelar cuando quiera?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Sí. Sin contratos, sin penalizaciones, sin trámites complicados. Aunque si cancelas como Fundador perderás el beneficio del precio asegurado por 12 meses.</p></div></div>
         <div class="faq-item"><button class="faq-pregunta" onclick="toggleFaq(this)">¿Qué pasa si se me acaban los créditos de imagen?<span class="faq-arrow">▼</span></button><div class="faq-respuesta"><p>Puedes adquirir paquetes adicionales de créditos desde la misma App cuando los necesites.</p></div></div>
@@ -613,20 +884,20 @@
         <h2 class="section-title" style="margin-bottom:32px;">El acceso Fundador está <span class="rojo">limitado a 50 personas.</span></h2>
       </div>
       <div class="fade-in" style="max-width:680px; margin:0 auto;">
-        <p style="font-size:29px; color:var(--blanco); line-height:1.8; margin-bottom:20px;">El acceso Fundador — con precio asegurado, bonos incluidos y mensualidad que empieza a partir de la fecha del lanzamiento oficial — está limitado a las primeras 50 personas.</p>
-        <p style="font-size:29px; color:var(--blanco); line-height:1.8; margin-bottom:20px;">No es un truco de marketing. Es una decisión consciente para cuidar la calidad de la experiencia y del servicio que te brindamos.</p>
-        <p style="font-size:29px; color:var(--blanco); line-height:1.8; margin-bottom:20px;">Cuando esos 50 lugares se llenen, el acceso Fundador se cierra para siempre. Los siguientes en llegar pagarán el precio regular… Sin bonos, sin precio asegurado, sin los beneficios que tú tienes hoy.</p>
-        <p style="font-size:36px; font-weight:700; color:var(--blanco);">¿Cuántos lugares quedan? <span class="rojo">Muy pocos.</span></p>
+        <p class="section-body" style="margin-bottom:20px;">El acceso Fundador — con precio asegurado, bonos incluidos y mensualidad que empieza a partir de la fecha del lanzamiento oficial — está limitado a las primeras 50 personas.</p>
+        <p class="section-body" style="margin-bottom:20px;">No es un truco de marketing. Es una decisión consciente para cuidar la calidad de la experiencia y del servicio que te brindamos.</p>
+        <p class="section-body" style="margin-bottom:20px;">Cuando esos 50 lugares se llenen, el acceso Fundador se cierra para siempre. Los siguientes en llegar pagarán el precio regular… Sin bonos, sin precio asegurado, sin los beneficios que tú tienes hoy.</p>
+        <p style="font-size:clamp(18px,3.5vw,28px); font-weight:700; color:var(--blanco);">¿Cuántos lugares quedan? <span class="rojo">Muy pocos.</span></p>
       </div>
     </div>
   </section>
 
-  <!-- PROFUNDIZACION -->
+  <!-- PROFUNDIZACIÓN -->
   <section class="section" style="background:#0a0a0a;">
     <div class="container">
       <div class="fade-in">
         <p class="section-label" style="color:var(--verde);">Imagina esto.</p>
-        <h2 class="section-title">Tu día con <span class="amarillo"><span style="color:var(--amarillo); font-weight:600;">Never Off</span>.</span></h2>
+        <h2 class="section-title">Tu día con <span class="amarillo">Never Off.</span></h2>
       </div>
       <div style="max-width:680px; margin:40px auto 0;" class="fade-in">
         <div class="prof-hora">8:00</div>
@@ -640,8 +911,8 @@
         </div>
         <p class="prof-texto" style="margin-top:28px;"><strong>Tu negocio está activo en redes mientras tú vives tu vida.</strong></p>
         <div class="prof-cierre">
-          <p>Eso es <span><span style="color:var(--amarillo); font-weight:600;">Never Off</span>.</span></p>
-          <p style="font-size:22px; color:var(--blanco); font-family:'DM Sans',sans-serif; font-weight:400; margin-top:8px;">No una promesa. <span style="color:var(--amarillo); font-weight:600;">Es una realidad que ya existe…</span> y <span style="color:var(--verde); font-weight:600;">que está esperando por ti.</span></p>
+          <p>Eso es <span style="color:var(--amarillo); font-weight:600;">Never Off.</span></p>
+          <p style="font-size:clamp(15px,2.5vw,20px); color:var(--blanco); font-family:'DM Sans',sans-serif; font-weight:400; margin-top:8px;">No una promesa. <span style="color:var(--amarillo); font-weight:600;">Es una realidad que ya existe…</span> y <span style="color:var(--verde); font-weight:600;">que está esperando por ti.</span></p>
         </div>
       </div>
     </div>
@@ -651,22 +922,24 @@
   <section class="section" style="background:var(--negro); text-align:center;">
     <div class="container">
       <div class="fade-in">
-        <h2 class="section-title" style="font-size:clamp(36px,6vw,64px); margin-bottom:32px; color:var(--verde);">El momento es ahora.</h2>
-        <div style="max-width:680px; margin:0 auto 40px; font-size:29px; color:var(--blanco); line-height:1.8;">
+        <h2 class="section-title" style="font-size:clamp(32px,6vw,64px); margin-bottom:32px; color:var(--verde);">El momento es ahora.</h2>
+        <div style="max-width:680px; margin:0 auto 40px;" class="section-body">
           Ya sabes lo que <span style="color:var(--amarillo); font-weight:600;">Never Off</span> puede hacer por ti.<br>
           Ya sabes lo que te cuesta no tenerla.<br>
           <span style="color:var(--amarillo); font-weight:600;">Ya sabes que esta oferta no dura para siempre.</span><br><br>
-          La única pregunta que queda es: <strong style="color:var(--blanco);"><span style="color:var(--amarillo); font-weight:600;">¿Vas a seguir perdiendo horas, desatendiendo a tu familia y <span style="color:var(--rojo); font-weight:600;">dejando dinero sobre la mesa?</span></span> ¿O vas a <span style="color:var(--verde); font-weight:600;">tomar el control de tus redes hoy, sin estrés,</span> y dejar <span style="color:var(--verde); font-weight:600;">que tu negocio trabaje por ti?</span></strong>
+          La única pregunta que queda es:
+          <strong style="color:var(--amarillo);">¿Vas a seguir perdiendo horas, desatendiendo a tu familia y <span style="color:var(--rojo);">dejando dinero sobre la mesa?</span></strong>
+          ¿O vas a <span style="color:var(--verde); font-weight:600;">tomar el control de tus redes hoy, sin estrés,</span> y dejar <span style="color:var(--verde); font-weight:600;">que tu negocio trabaje por ti?</span>
         </div>
-        <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:32px;">
-          <div style="background:var(--gris); border:1px solid #333; padding:8px 16px; border-radius:100px; font-size:14px; color:var(--blanco);">🔒 Precio Fundador asegurado 12 meses</div>
-          <div style="background:var(--gris); border:1px solid #333; padding:8px 16px; border-radius:100px; font-size:14px; color:var(--blanco);">✅ Acceso inmediato</div>
-          <div style="background:var(--gris); border:1px solid #333; padding:8px 16px; border-radius:100px; font-size:14px; color:var(--blanco);">✅ Garantía 7 días</div>
+        <div class="trust-chips">
+          <div class="trust-chip">🔒 Precio Fundador asegurado 12 meses</div>
+          <div class="trust-chip">✅ Acceso inmediato</div>
+          <div class="trust-chip">✅ Garantía 7 días</div>
         </div>
         <div style="max-width:480px; margin:0 auto;">
           <a href="#planes" class="btn-cta" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">QUIERO SER FUNDADOR(A)</a>
         </div>
-        <p style="margin-top:12px; font-size:14px; color:var(--rojo); font-weight:600;">⚠️ Válido solo para las primeras 50 personas</p>
+        <p style="margin-top:12px; font-size:clamp(12px,2vw,14px); color:var(--rojo); font-weight:600;">⚠️ Válido solo para las primeras 50 personas</p>
       </div>
     </div>
   </section>
@@ -675,18 +948,35 @@
   <section class="section" style="background:#0a0a0a; border-top:1px solid #1a1a1a;">
     <div class="container">
       <div style="max-width:680px; margin:0 auto; text-align:center;" class="fade-in">
-        <img class="cierre-mascota" src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-never-off-con-fondo-webp.webp" alt="Mascota Never Off App" loading="lazy">
+        <img class="cierre-mascota"
+             src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-never-off-con-fondo-webp.webp"
+             alt="Mascota Never Off App" loading="lazy">
         <h2 class="section-title" style="color:var(--verde);">Gracias por llegar hasta aquí.</h2>
-        <p class="section-body" style="margin:24px auto;">Si leíste todo esto es porque algo dentro de ti sabe que esto es lo que necesitabas. <span style="color:var(--amarillo); font-weight:600;">Never Off</span> no es solo una App. Es la herramienta que yo misma necesitaba, y que construí para que tú <span style="color:var(--verde); font-weight:600;">nunca más</span> <span style="color:var(--amarillo); font-weight:600;">tengas que elegir</span> entre <span style="color:var(--verde); font-weight:600;">atender tu negocio o tu familia</span> y <span style="color:var(--amarillo); font-weight:600;">estar presente en redes.</span></p>
-        <p class="section-body" style="margin:0 auto 32px;"><span style="color:var(--amarillo); font-weight:600;">Tu marca merece ser vista.</span> <span style="color:var(--verde); font-weight:600;">Tu negocio merece crecer.</span> <span style="color:var(--amarillo); font-weight:600;">Tu familia merece tenerte presente.</span> <span style="color:var(--verde); font-weight:600;">Y tú mereces recuperar tu tiempo y aligerar tu carga.</span></p>
-        <p style="font-size:22px; color:var(--amarillo); margin-bottom:8px;">Nos vemos adentro.✨</p>
-        <p style="font-size:16px; color:var(--blanco);">Judy, creadora de Never Off</p>
+        <p class="section-body" style="margin:24px auto;">
+          Si leíste todo esto es porque algo dentro de ti sabe que esto es lo que necesitabas.
+          <span style="color:var(--amarillo); font-weight:600;">Never Off</span> no es solo una App. Es la herramienta que yo misma necesitaba, y que construí para que tú
+          <span style="color:var(--verde); font-weight:600;">nunca más</span>
+          <span style="color:var(--amarillo); font-weight:600;">tengas que elegir</span> entre
+          <span style="color:var(--verde); font-weight:600;">atender tu negocio o tu familia</span> y
+          <span style="color:var(--amarillo); font-weight:600;">estar presente en redes.</span>
+        </p>
+        <p class="section-body" style="margin:0 auto 32px;">
+          <span style="color:var(--amarillo); font-weight:600;">Tu marca merece ser vista.</span>
+          <span style="color:var(--verde); font-weight:600;">Tu negocio merece crecer.</span>
+          <span style="color:var(--amarillo); font-weight:600;">Tu familia merece tenerte presente.</span>
+          <span style="color:var(--verde); font-weight:600;">Y tú mereces recuperar tu tiempo y aligerar tu carga.</span>
+        </p>
+        <p style="font-size:clamp(16px,3vw,22px); color:var(--amarillo); margin-bottom:8px;">Nos vemos adentro. ✨</p>
+        <p style="font-size:clamp(13px,2vw,16px); color:var(--blanco);">Judy, creadora de Never Off</p>
         <div style="max-width:480px; margin:32px auto 0;">
           <a href="#planes" class="btn-cta" onclick="if(window.fbq) fbq('track', 'InitiateCheckout')">QUIERO SER FUNDADOR(A)</a>
         </div>
-        <p style="margin-top:12px; font-size:14px; color:var(--rojo); font-weight:600;">⚠️ Válido solo para las primeras 50 personas</p>
+        <p style="margin-top:12px; font-size:clamp(12px,2vw,14px); color:var(--rojo); font-weight:600;">⚠️ Válido solo para las primeras 50 personas</p>
         <div class="cierre-frase-final">
-          <p><span style="display:block;">Ya tienes suficiente con el estrés de la vida.</span><span style="display:block;">✨Deja que <span style="color:var(--verde); font-weight:600;">Never Off</span> se haga cargo de tus redes sociales. 🚀</span></p>
+          <p>
+            <span style="display:block;">Ya tienes suficiente con el estrés de la vida.</span>
+            <span style="display:block;">✨ Deja que <span style="color:var(--verde); font-weight:600;">Never Off</span> se haga cargo de tus redes sociales. 🚀</span>
+          </p>
         </div>
       </div>
     </div>
@@ -694,7 +984,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:16px;"><img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/logo-never-off-app-cuadrado-transparente-webp.webp" alt="Never Off" style="width:48px; height:48px; border-radius:10px;"><span class="footer-logo" style="margin-bottom:0;">Never ∞ Off</span></div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:16px;">
+      <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/logo-never-off-app-cuadrado-transparente-webp.webp" alt="Never Off" style="width:44px; height:44px; border-radius:10px;">
+      <span class="footer-logo" style="margin-bottom:0;">Never ∞ Off</span>
+    </div>
     <div class="footer-links">
       <a href="never-off-terminos-y-condiciones-mvp.docx">Términos y Condiciones</a>
       <a href="never-off-aviso-de-privacidad-mvp.docx">Aviso de Privacidad</a>
