@@ -170,11 +170,11 @@
     .prueba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
 
     /* GARANTÍA */
-    .garantia-card { max-width: 680px; margin: 0 auto; background: var(--gris); border: 2px solid var(--verde); border-radius: 24px; padding: 48px 140px 48px 40px; text-align: center; position: relative; overflow: hidden; }
+    .garantia-card { max-width: 680px; margin: 0 auto; background: var(--gris); border: 2px solid var(--verde); border-radius: 24px; padding: 48px 40px 90px 40px; text-align: center; position: relative; overflow: visible; }
     .garantia-icon { margin-bottom: 24px; }
     .garantia-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 42px); color: var(--verde); margin-bottom: 16px; }
     .garantia-text { font-size: clamp(14px, 2.5vw, 18px); color: var(--blanco); line-height: 1.9; }
-    .garantia-mascota { position: absolute; bottom: -30px; right: -20px; width: 110px; filter: drop-shadow(0 8px 20px rgba(255,234,42,0.3)); animation: float 3s ease-in-out infinite; }
+    .garantia-mascota { position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); width: 140px; filter: drop-shadow(0 8px 20px rgba(255,234,42,0.3)); animation: float 3s ease-in-out infinite; }
 
     /* NO PARA TI */
     .no-lista { list-style: none; margin-top: 32px; max-width: 680px; }
@@ -286,7 +286,7 @@
       .section-sm { padding: 32px 0; }
 
       /* Mascota garantía — sacarla del flujo absoluto en móvil */
-      .garantia-mascota { position: relative; bottom: auto; right: auto; width: 90px; margin: 24px auto 0; display: block; }
+      .garantia-mascota { position: relative; bottom: auto; left: auto; transform: none; width: 120px; margin: 32px auto 0; display: block; }
 
       /* Hero */
       .hero { padding: 32px 0 24px; }
@@ -619,9 +619,13 @@
   <!-- GARANTÍA -->
   <section class="section" style="background:#0f0f0f;">
     <div class="container">
+      <div class="fade-in center" style="margin-bottom:32px;">
+        <p class="section-label" style="color:var(--verde);">Garantía</p>
+        <h2 class="section-title">¿Y si no te convence? <span style="color:var(--amarillo);">No hay problema.</span></h2>
+      </div>
       <div class="garantia-card fade-in">
         <div class="garantia-icon">
-          <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/escudo-garantia-dorado.webp" alt="Garantía" style="width:clamp(100px,20vw,180px); height:auto;">
+          <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/escudo-garantia-dorado.webp" alt="Garantía" style="width:clamp(140px,25vw,240px); height:auto;">
         </div>
         <h2 class="garantia-title">Tu inversión está 100% protegida.</h2>
         <p class="garantia-text">
