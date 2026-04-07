@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Bienvenido/a Fundador/a! — Never Off App</title>
+  <meta name="description" content="Ya eres parte de Never Off. Revisa tu correo para los próximos pasos.">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '893200347088141');
+  fbq('track', 'PageView');
+  fbq('track', 'Purchase');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=893200347088141&ev=Purchase&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --negro: #0A0A0A; --amarillo: #FFEA2A; --blanco: #FFFFFF;
+      --gris: #1A1A1A; --verde: #22C55E; --rojo: #E24B4A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; line-height: 1.1; }
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(10,10,10,0.95);
+      border-bottom: 2px solid var(--amarillo);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* HERO GRACIAS */
+    .gracias-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .gracias-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .gracias-inner {
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .mascota {
+      width: clamp(140px, 25vw, 200px);
+      margin: 0 auto 32px;
+      display: block;
+      filter: drop-shadow(0 10px 30px rgba(255,234,42,0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    .gracias-badge {
+      display: inline-block;
+      background: rgba(34,197,94,0.15);
+      border: 1px solid var(--verde);
+      color: var(--verde);
+      font-size: clamp(13px, 2vw, 16px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .gracias-titulo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 8vw, 80px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .gracias-sub {
+      font-size: clamp(18px, 3vw, 24px);
+      color: var(--amarillo);
+      font-weight: 700;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    /* CARD INSTRUCCIONES */
+    .instrucciones-card {
+      background: var(--gris);
+      border: 2px solid var(--amarillo);
+      border-radius: 24px;
+      padding: 40px 32px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+    .instrucciones-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amarillo), var(--verde));
+    }
+
+    .paso {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .paso:last-child { border-bottom: none; }
+
+    .paso-numero {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: var(--amarillo);
+      color: var(--negro);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .paso-contenido { flex: 1; }
+    .paso-titulo {
+      font-weight: 700;
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: var(--amarillo);
+      margin-bottom: 6px;
+    }
+    .paso-texto {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--blanco);
+      line-height: 1.7;
+    }
+
+    /* ALERTA CORREO */
+    .alerta-correo {
+      background: rgba(255,234,42,0.08);
+      border: 1px solid rgba(255,234,42,0.4);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .alerta-correo .icono { font-size: 28px; flex-shrink: 0; }
+    .alerta-correo p { font-size: clamp(14px, 2vw, 16px); color: var(--blanco); line-height: 1.7; }
+    .alerta-correo strong { color: var(--amarillo); }
+
+    /* REDES */
+    .redes-section { margin-bottom: 40px; }
+    .redes-titulo {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--blanco);
+      margin-bottom: 16px;
+      opacity: 0.7;
+    }
+    .redes-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gris);
+      border: 1px solid #333;
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .redes-link:hover { border-color: var(--amarillo); color: var(--amarillo); }
+
+    /* FRASE FINAL */
+    .frase-final {
+      background: var(--amarillo);
+      border-radius: 20px;
+      padding: 32px 24px;
+      margin-bottom: 16px;
+    }
+    .frase-final p {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px, 5vw, 48px);
+      color: #000;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #050505;
+      border-top: 1px solid #1a1a1a;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amarillo); }
+    .footer-copy { font-size: 12px; color: #444; }
+
+    @media (max-width: 768px) {
+      .instrucciones-card { padding: 28px 20px; }
+      .gracias-hero { padding: 40px 20px; }
+      .frase-final { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/logo-never-off-app-cuadrado-transparente-webp.webp"
+         alt="Never Off" style="width:44px; height:44px; border-radius:10px;">
+  </nav>
+
+  <section class="gracias-hero">
+    <div class="gracias-inner">
+
+      <img class="mascota"
+           src="https://raw.githubusercontent.com/serviciosajc8/never-off-App-sales-page-assets/main/mascota-never-off-con-fondo-webp.webp"
+           alt="Mascota Never Off App">
+
+      <div class="gracias-badge">✅ Pago confirmado</div>
+
+      <h1 class="gracias-titulo">
+        ¡Ya eres<br>
+        <span style="color:var(--amarillo);">Fundador(a)</span><br>
+        <span style="color:var(--verde);">de Never Off!</span>
+      </h1>
+
+      <p class="gracias-sub">
+        Bienvenido(a) al grupo de los primeros.<br>Hiciste bien en actuar hoy. 🚀
+      </p>
+
+      <div class="instrucciones-card">
+        <div class="paso">
+          <div class="paso-numero">1</div>
+          <div class="paso-contenido">
+            <div class="paso-titulo">Revisa tu correo electrónico</div>
+            <div class="paso-texto">Te enviamos un correo con todos los detalles de tu compra y los próximos pasos para acceder a Never Off. Puede tardar unos minutos en llegar.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-numero">2</div>
+          <div class="paso-contenido">
+            <div class="paso-titulo">Revisa tu carpeta de spam</div>
+            <div class="paso-texto">Si no ves el correo en tu bandeja principal, revisa spam o promociones. Márcalo como "no es spam" para no perder ninguna comunicación nuestra.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-numero">3</div>
+          <div class="paso-contenido">
+            <div class="paso-titulo">Espera tu acceso — viene pronto</div>
+            <div class="paso-texto">Estamos en la recta final del lanzamiento. En cuanto la app esté lista recibirás tu link de acceso directamente en ese correo. <span style="color:var(--amarillo); font-weight:600;">Tu precio y todos tus beneficios de Fundador(a) ya están asegurados.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alerta-correo">
+        <div class="icono">📧</div>
+        <p>¿Tienes dudas o no recibiste tu correo? Escríbenos a <strong>neveroffapp@gmail.com</strong> y te respondemos a la brevedad.</p>
+      </div>
+
+      <div class="redes-section">
+        <p class="redes-titulo">Mientras tanto, síguenos en Instagram para no perderte nada 👇</p>
+        <a href="https://instagram.com/neveroffapp" target="_blank" class="redes-link">
+          <img src="https://raw.githubusercontent.com/serviciosajc8/never-off-app-sales-page-assets/main/instagram-icono.svg" alt="Instagram" style="width:20px; height:20px;"> @neveroffapp
+        </a>
+      </div>
+
+      <div class="frase-final">
+        <p style="text-align:center;">Tu marca nunca más<br>va a quedarse en silencio. 🔥</p>
+      </div>
+
+      <p style="font-size:clamp(13px,2vw,15px); color:#888; margin-top:16px;">
+        Judy, creadora de Never Off ✨
+      </p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="never-off-terminos-y-condiciones-mvp.docx">Términos y Condiciones</a>
+      <a href="never-off-aviso-de-privacidad-mvp.docx">Aviso de Privacidad</a>
+      <a href="mailto:neveroffapp@gmail.com">Soporte: neveroffapp@gmail.com</a>
+      <a href="https://instagram.com/neveroffapp" target="_blank">@neveroffapp</a>
+    </div>
+    <p class="footer-copy">© 2026 Play and Learn Media S.A.S. — Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
